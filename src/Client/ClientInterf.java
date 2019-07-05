@@ -254,7 +254,7 @@ public class ClientInterf  extends Application {
     }
 
     public void init_tabmsg() {
-        tab_msg = new TabellaMessaggi(parametri.confchat.fontCelleTabella);
+        tab_msg = new TabellaMessaggi(parametri.fontCelleTabella);
         tab_msg.setOnMouseClicked( 
                 new EventHandler<MouseEvent>(){
                     @Override
@@ -321,8 +321,8 @@ public class ClientInterf  extends Application {
                     return false;
                 }
 
-                gest_ser = new GestoreServer(parametri.confserver.port,
-                                InetAddress.getByName(parametri.confserver.ip),
+                gest_ser = new GestoreServer(parametri.server_port,
+                                InetAddress.getByName(parametri.server_ip),
                                 nomeutente);
                 
                 gest_ser.start();    
@@ -384,9 +384,9 @@ public class ClientInterf  extends Application {
     }
     public void caricaParametriConfigurazione(){
         //validaXML();
-       
+        XStream xs =new XStream();
         try{  
-            parametri =new ParamConfClient(new String(Files.readAllBytes(
+            parametri =(ParamConfClient)xs.fromXML(new String(Files.readAllBytes(
                                            Paths.get("./Configurazione.xml"))));
         }catch(IOException e){System.out.println(e.getMessage());}
 

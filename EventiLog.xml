@@ -1,0 +1,25 @@
+<Log.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-01-05 05:01:48</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-01-05 05:01:53</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-01-05 05:01:55</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-01-05 05:01:59</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>jj</utente>
+  <dataora>2019-06-05 05:06:22</dataora>
+</Log.EventoLog>

@@ -16,30 +16,15 @@ import java.io.IOException;
  */
 public class ParamConfClient {
  
-    public ConfigurazioneChatBoxXML confchat;
-    public ConfigurazioneServerXML confserver;
+    public String fontCelleTabella;
+    public String server_ip; 
+    public int server_port; 
 
-    public ParamConfClient(String xml) throws IOException {
-        
-        XStream xsconf = new XStream();
-        ParamConfClient pc= (ParamConfClient)xsconf.fromXML(xml);  
-        this.confchat= pc.confchat;
-        this.confserver=pc.confserver;
+    public ParamConfClient(String ip,String f, int port) throws IOException {
+       fontCelleTabella=f;
+       server_ip=ip;
+       server_port=port;
+      
     }
     
-    
-    
-    class ConfigurazioneChatBoxXML{
-   
-        public String fontCelleTabella ;
-        
-    }
-    
-   
-    class ConfigurazioneServerXML {
-        public String ip; 
-        public int port; 
-
-    
-    }
 }

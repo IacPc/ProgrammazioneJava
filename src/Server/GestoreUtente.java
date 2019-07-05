@@ -94,13 +94,13 @@ public class GestoreUtente extends Thread {
                             try {
                                 if(validaXML()){
                                     Files.write(
-                                                Paths.get("./Log.xml"),
+                                                Paths.get("./EventiLog.xml"),
                                                 s.getBytes(),
                                                 StandardOpenOption.APPEND
                                                 );
                                 }
                             }catch(NoSuchFileException nse){
-                                Files.write(Paths.get("./Log.xml"),
+                                Files.write(Paths.get("./EventiLog.xml"),
                                     s.getBytes(),StandardOpenOption.CREATE_NEW);
                             }
                             catch(IOException e){
@@ -151,7 +151,7 @@ public class GestoreUtente extends Thread {
         try{
             DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Document d = (Document) db.parse(new File("Configurazione.xml"));
+            Document d = (Document) db.parse(new File("Log.xml"));
             Schema s = sf.newSchema(new StreamSource(new File("ValidazionelogXML.xsd")));
             s.newValidator().validate(new DOMSource(d));
         } catch (Exception e) {

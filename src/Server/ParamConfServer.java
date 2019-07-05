@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Client;
+package Server;
 
 /**
  *
  * @author Iacopo
  */
-public class Prova {
-    public static void main(String args[]){
+public class ParamConfServer {
+    int portadb;
+    String nomeDB;
+    int porta_ascolto;
     
-    }
 }
