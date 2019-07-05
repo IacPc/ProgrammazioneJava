@@ -11,4 +11,6 @@ package Client;
  */
 public class CacheBinaria {
     
+    
+    
 }
