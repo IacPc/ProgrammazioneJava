@@ -1,0 +1,590 @@
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-24-03 11:24:30</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-26-03 11:26:17</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-26-03 11:26:35</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-37-03 12:37:51</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-38-03 12:38:12</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>maria</utente>
+  <dataora>2019-26-03 03:26:01</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>gastone</utente>
+  <dataora>2019-26-03 03:26:21</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Luigi</utente>
+  <dataora>2019-26-03 03:26:36</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Luigi</utente>
+  <dataora>2019-26-03 03:26:36</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Luigi</utente>
+  <dataora>2019-26-03 03:26:40</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Luigi</utente>
+  <dataora>2019-27-03 03:27:41</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Alberto</utente>
+  <dataora>2019-27-03 03:27:56</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Alberto</utente>
+  <dataora>2019-27-03 03:27:56</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>peppe</utente>
+  <dataora>2019-32-03 06:32:31</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Franco</utente>
+  <dataora>2019-32-03 06:32:47</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Franco</utente>
+  <dataora>2019-32-03 06:32:57</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Franco</utente>
+  <dataora>2019-33-03 06:33:01</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Franco</utente>
+  <dataora>2019-33-03 06:33:01</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Franco</utente>
+  <dataora>2019-33-03 06:33:02</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Franco</utente>
+  <dataora>2019-33-03 06:33:09</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Franco</utente>
+  <dataora>2019-36-03 06:36:45</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Franco</utente>
+  <dataora>2019-36-03 06:36:55</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Ciccio</utente>
+  <dataora>2019-37-03 06:37:14</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Ciccio</utente>
+  <dataora>2019-37-03 06:37:20</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Ciccio</utente>
+  <dataora>2019-38-03 06:38:29</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-39-03 06:39:01</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-39-03 06:39:28</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-39-03 06:39:41</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-40-03 06:40:47</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-42-03 06:42:18</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-42-03 06:42:41</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-44-03 06:44:16</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-53-03 06:53:12</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-53-03 06:53:16</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-53-03 06:53:38</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-53-03 06:53:58</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-53-03 06:53:59</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-54-03 06:54:42</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:11</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:13</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:16</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:23</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:24</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:24</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:24</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:24</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:24</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:24</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:34</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:39</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:41</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:42</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Anselmo</utente>
+  <dataora>2019-50-04 09:50:50</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-59-04 09:59:12</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-59-04 09:59:14</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-00-04 10:00:57</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-00-04 10:00:58</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-01-04 10:01:13</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-02-04 10:02:33</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-02-04 10:02:35</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-02-04 10:02:39</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-02-04 10:02:40</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-02-04 10:02:43</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-02-04 10:02:48</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-03-04 10:03:43</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-03-04 10:03:44</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-03-04 10:03:51</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-03-04 10:03:53</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-04-04 10:04:17</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-05-04 10:05:40</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-05-04 10:05:41</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-05-04 10:05:53</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-15-04 10:15:42</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-33-04 02:33:18</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-54-04 02:54:27</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-54-04 02:54:29</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-54-04 02:54:31</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-54-04 02:54:44</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-54-04 02:54:45</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-54-04 02:54:47</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-54-04 02:54:47</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-54-04 02:54:53</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-13-04 03:13:42</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pluto</utente>
+  <dataora>2019-13-04 03:13:52</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-40-04 03:40:40</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>rr</utente>
+  <dataora>2019-51-04 03:51:38</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>rr</utente>
+  <dataora>2019-51-04 03:51:39</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>rr</utente>
+  <dataora>2019-51-04 03:51:39</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>rr</utente>
+  <dataora>2019-51-04 03:51:40</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>ppp</utente>
+  <dataora>2019-55-04 03:55:01</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>ppp</utente>
+  <dataora>2019-55-04 03:55:02</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>ppp</utente>
+  <dataora>2019-55-04 03:55:02</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>ppp</utente>
+  <dataora>2019-55-04 03:55:03</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>ppp</utente>
+  <dataora>2019-55-04 03:55:04</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>ppp</utente>
+  <dataora>2019-55-04 03:55:04</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>ppp</utente>
+  <dataora>2019-55-04 03:55:05</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-58-04 03:58:19</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-58-04 03:58:20</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-58-04 03:58:21</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-58-04 03:58:21</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-58-04 03:58:22</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-58-04 03:58:22</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-58-04 03:58:23</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-58-04 03:58:29</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>uu</utente>
+  <dataora>2019-59-04 03:59:03</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>uu</utente>
+  <dataora>2019-59-04 03:59:04</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>uu</utente>
+  <dataora>2019-59-04 03:59:05</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>uu</utente>
+  <dataora>2019-59-04 03:59:05</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>uu</utente>
+  <dataora>2019-59-04 03:59:05</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>uu</utente>
+  <dataora>2019-59-04 03:59:05</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>uu</utente>
+  <dataora>2019-59-04 03:59:05</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>uu</utente>
+  <dataora>2019-59-04 03:59:06</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-59-04 03:59:49</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-59-04 03:59:49</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-59-04 03:59:49</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-59-04 03:59:50</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-59-04 03:59:50</dataora>
+</Log.EventoLog>
+<Log.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pp</utente>
+  <dataora>2019-59-04 03:59:59</dataora>
+</Log.EventoLog>

@@ -1,0 +1,15 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <!-- evento.xsd -->
+ <xsd:element name="Log.EventoLog">
+  <xsd:complexType>
+   <xsd:all>
+    <xsd:element name="ip" type="xsd:string" />
+    <xsd:element name="utente" type="xsd:string" />
+    <xsd:element name="dataora" type="xsd:string" />
+   </xsd:all>
+    <xsd:attribute name="tipo" type="xsd:string" use="required"/>
+  </xsd:complexType>
+ </xsd:element>
+ 
+</xsd:schema>
