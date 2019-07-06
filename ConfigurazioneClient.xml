@@ -1,5 +1,5 @@
 <Client.ParamConfClient>
   <fontCelleTabella>-fx-background-color:TRANSPARENT;-fx-border-width : 0 1 0 1;-fx-border-color: #F3F3F3;-fx-text-fill : black;-fx-padding : 16 0 16 0 ;</fontCelleTabella>
-  <server__ip>127.0.0.1</server__ip>
-  <server__port>8080</server__port>
+  <server_ip>127.0.0.1</server_ip>
+  <server_port>8080</server_port>
 </Client.ParamConfClient>

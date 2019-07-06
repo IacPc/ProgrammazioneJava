@@ -12,6 +12,8 @@ import java.net.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.time.format.DateTimeFormatter;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -88,10 +90,13 @@ public class ClientInterf  extends Application {
    private  HBox hbBtn_txt ;    
    private  TextField txt_invia;
    private static Button btn_invia;
+
    //Grafo
    private Button btnAggiorna;
    private static GrafoInterazioni grafo;
    private ParamConfClient parametri;
+   
+   private CacheBinaria cache;
    
    void cambia_scena(Stage s,Scene sc){
         s.setScene(sc);
@@ -232,7 +237,7 @@ public class ClientInterf  extends Application {
                     try {
                         Message m=new Message_CHAT(testo,Type.CHAT,nomeutente,dest);
                         gest_ser.invia_msg(m);
-                        tab_msg.inserisci(m);
+                        ins_in_tabella(m);
                         gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
                     } catch (IOException e) {
                         txt_invia.setText("invio fallito");
@@ -292,6 +297,7 @@ public class ClientInterf  extends Application {
                                         gest_ser.get_localadd(),nomeutente);
                    gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
                    gest_ser.invia_msg(new MessageLOGIN_OUT(Type.LOG_OUT,nomeutente));
+                   salvaInCache();
                 } catch (IOException e) {e.printStackTrace();
                 }
                list_utenteon.getItems().clear();
@@ -300,6 +306,7 @@ public class ClientInterf  extends Application {
                gest_ser=null;
             }
         });
+        leggiDallaCache();
         stage.setScene(scena_connesso);
         stage.show();
     
@@ -376,18 +383,20 @@ public class ClientInterf  extends Application {
     }    
    
     public static void ins_in_tabella(Message m){
-        tab_msg.inserisci(m);
+        DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy-mm-dd hh:mm:ss");;
+
+        tab_msg.inserisci(new CampiTabella(m.getMittente(), m.getTesto(),dtf.format( m.getTime())));
     }
     
     public static void aggiornagrafo(ArrayList<CampiGrafo> al ){
         grafo.aggiungiuntenti(al);
     }
     public void caricaParametriConfigurazione(){
-        //validaXML();
+        validaXML();
         XStream xs =new XStream();
         try{  
             parametri =(ParamConfClient)xs.fromXML(new String(Files.readAllBytes(
-                                           Paths.get("./Configurazione.xml"))));
+                                           Paths.get("./ConfigurazioneClient.xml"))));
         }catch(IOException e){System.out.println(e.getMessage());}
 
     }
@@ -396,11 +405,39 @@ public class ClientInterf  extends Application {
         try{
             DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI); 
-            Document d = (Document) db.parse(new File("./Configurazione.xml"));
-            Schema s = sf.newSchema(new StreamSource(new File("./ConfigurazioneXML.xsd")));  
+            Document d = (Document) db.parse(new File("./Configurazioneclient.xml"));
+            Schema s = sf.newSchema(new StreamSource(new File("./ConfigurazioneclientXML.xsd")));  
             s.newValidator().validate(new DOMSource(d)); 
         } catch (Exception e) {System.out.println("Errore di validazione: " + e.getMessage());}
     }
+    
+    public void salvaInCache(){
+      try(FileOutputStream scriviFile = new FileOutputStream("./CacheLocale.bin");
+            ObjectOutputStream oggettoScritto = new ObjectOutputStream(scriviFile);){
+            
+            oggettoScritto.writeObject(new CacheBinaria(
+                                                        txt_invia.getText(), 
+                                                        grafo.getUtenti(),
+                                                        tab_msg.list_messages,
+                                                        nomeutente)
+                                                        );
+        } catch(IOException ioe){System.out.println(ioe.getMessage());}
+    }
+    public void leggiDallaCache(){
+    try(FileInputStream leggiFile = new FileInputStream("./CacheLocale.bin");
+            ObjectInputStream oggettoLetto = new ObjectInputStream(leggiFile);){
+            cache = (CacheBinaria) oggettoLetto.readObject();
+            
+            for(int i =0;i<cache.ultimi_mess.size();i++)
+                tab_msg.inserisci( cache.ultimi_mess.get(i));
+            
+            txt_invia.setText(cache.testoLasciatoincasella);
+            txtconnetti.setText(cache.ultimouser);
+            grafo.aggiungiuntenti(cache.ultime_interazioni);
+        } catch(IOException ioe){System.out.println(ioe.getMessage());}
+          catch(ClassNotFoundException cnfe){System.out.println(cnfe.getMessage());}
+    
+    
+    }
 }
-//pulire la tabella DAFARE
 

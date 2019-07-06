@@ -5,8 +5,7 @@
  */
 package Client;
 
-import Messaggi.CampiGrafo;
-import com.thoughtworks.xstream.XStream;
+
 import java.io.IOException;
 
 

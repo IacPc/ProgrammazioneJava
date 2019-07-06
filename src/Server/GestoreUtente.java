@@ -92,7 +92,7 @@ public class GestoreUtente extends Thread {
                             String s =new String( msg.getTesto()+'\n');
                             System.out.print(s);
                             try {
-                                if(validaXML()){
+                                if(Server.validaXML("Log.xml","ValidazionelogXML.xsd")){
                                     Files.write(
                                                 Paths.get("./EventiLog.xml"),
                                                 s.getBytes(),
@@ -147,20 +147,6 @@ public class GestoreUtente extends Thread {
     
     
     
-    public static boolean validaXML(){
-        try{
-            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Document d = (Document) db.parse(new File("Log.xml"));
-            Schema s = sf.newSchema(new StreamSource(new File("ValidazionelogXML.xsd")));
-            s.newValidator().validate(new DOMSource(d));
-        } catch (Exception e) {
-            System.out.println("Errore di validazione: " + e.getMessage()+"!");
-            return false;
-        }
-        System.out.println("Validazione avvenuta con successo");
-        return true;
-    }
     
     
     

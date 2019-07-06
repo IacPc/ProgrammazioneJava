@@ -39,7 +39,7 @@ public class GrafoInterazioni extends PieChart {
     
     } 
     
-    
+    public ObservableList getUtenti(){return this.utenti;}
     
     
 }

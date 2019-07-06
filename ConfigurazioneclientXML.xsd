@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ConfigurazioneXML.xsd -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="Client.ParamConfClient">
+  <xsd:complexType>
+
+	  <xsd:all>
+		<xsd:element name="fontCelleTabella" type="xsd:string" />
+		<xsd:element name="server_ip" type="xsd:string" />
+		<xsd:element name="server_port" type="xsd:int" />
+	   </xsd:all>
+	</xsd:complexType>
+ </xsd:element>
+ 
+</xsd:schema>

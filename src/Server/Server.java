@@ -5,18 +5,26 @@
  */
 package Server;
 
+import Client.ParamConfClient;
 import Messaggi.*;
+import com.thoughtworks.xstream.XStream;
 import java.io.*;
 import java.net.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Set;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.sql.*;
-import java.util.Map;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import org.w3c.dom.Document;
 
 /**
  *
@@ -35,11 +43,18 @@ public class Server {
     private static ServerSocket listener;
     private static HashMap<String,GestoreUtente> Lgestut = new HashMap();
     private static GestoreDB gDB;
+    private static ParamConfServer pcs;
     public static void main(String[] args) {
-        System.out.println("Chat server avviato e in ascolto sulla porta:8080");
         try{
-            gDB  = new GestoreDB();
-            listener= new ServerSocket(port);
+            XStream xs =new XStream();
+            if(!validaXML("ConfigurazioneServer.xml","ConfigurazioneServerXML.xsd"))
+                return;
+            pcs = (ParamConfServer)(xs).fromXML(new String(Files.readAllBytes(
+                                           Paths.get("./ConfigurazioneServer.xml"))));
+            gDB  = new GestoreDB(pcs.pDB.nomeDB,pcs.pDB.passDB,pcs.porta_ascolto);
+            listener= new ServerSocket(pcs.porta_ascolto);
+            System.out.println("Chat server avviato e in ascolto sulla porta:"+pcs.porta_ascolto);
+
             while (true) {
                 Socket s= listener.accept();
                 
@@ -49,9 +64,12 @@ public class Server {
                 gu.start();
             }
            
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
+        }catch(SQLException e){
+            System.err.println("Connessione al db non riuscita");
+        }
+         catch(IOException |ClassNotFoundException ie){
+             System.err.println("gestione nuova richiesta fallita");
+         }
     }
     
     public static synchronized boolean inserisci_utente(String nm,GestoreUtente gu){
@@ -123,13 +141,21 @@ public class Server {
     
     public static synchronized ArrayList getStatistiche(){
     
-        ArrayList<CampiGrafo> al = null;
         try {
-            return  gDB.aggiornaInterazioneUtente(100,3);
-        } catch (Exception e) {e.printStackTrace();
+            return  gDB.aggiornaInterazioneUtente(pcs.pGR.giornigrafo,pcs.pGR.quantiutenti);
+        } catch (Exception e) {e.printStackTrace();return null;
         }
-        
-        
-        return al;
+       
+    }
+    public static boolean validaXML(String doc,String xsd){
+        try{
+            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI); 
+            Document d = (Document) db.parse(new File(doc));
+            Schema s = sf.newSchema(new StreamSource(new File(xsd)));  
+            s.newValidator().validate(new DOMSource(d)); 
+            return true;
+        } catch (Exception e) {System.out.println("Errore di validazione: " + e.getMessage());
+                                return false;}
     }
 }

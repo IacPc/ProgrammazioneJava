@@ -17,27 +17,27 @@ public class GestoreDB {
     private static PreparedStatement statementinseriscimessaggi; 
     private static PreparedStatement statementinserisciutenti; 
     private static PreparedStatement statementaggiornainterazione;
+    
+    public  GestoreDB(String n,String pw,int porta)throws SQLException {
+    
+            connessioneADatabase = DriverManager.getConnection("jdbc:mysql://localhost:"+3306+"/"+n,"root",pw);   
+            statementinseriscimessaggi = connessioneADatabase.prepareStatement(
+                         "INSERT INTO `prog_av`.`messaggi` (`NomeMittente`,"
+                         + "`NomeDestinatario`, `DataInvio`, `Testo`)"
+                         + " VALUES (?, ?, ?, ?);"
+                    );
+            statementinserisciutenti = connessioneADatabase.prepareStatement(
+                       "INSERT INTO `prog_av`.`utenticonnessi` "
+                       + "(`NomeUtente`, `MessaggiRicevuti`) VALUES (?, '0');"
+                    );
+            statementaggiornainterazione=connessioneADatabase.prepareStatement(
+                           "select NomeDestinatario as nd,count(*) as nm"
+                         + " FROM prog_av.messaggi where DataInvio >= (current_date - ?)"
+                         + " group by NomeDestinatario"
+                         + " order by nm desc;");
 
-    static  {
-       try { connessioneADatabase = DriverManager.getConnection("jdbc:mysql://localhost:3306/prog_av", "root","");   
-             statementinseriscimessaggi = connessioneADatabase.prepareStatement(
-                     "INSERT INTO `prog_av`.`messaggi` (`NomeMittente`,"
-                     + "`NomeDestinatario`, `DataInvio`, `Testo`)"
-                     + " VALUES (?, ?, ?, ?);"
-             );
-             statementinserisciutenti = connessioneADatabase.prepareStatement(
-                "INSERT INTO `prog_av`.`utenticonnessi` "
-                + "(`NomeUtente`, `MessaggiRicevuti`) VALUES (?, '0');"
-             );
-             statementaggiornainterazione=connessioneADatabase.prepareStatement(
-                    "select NomeDestinatario as nd,count(*) as nm"
-                  + " FROM prog_av.messaggi where DataInvio >= (current_date - ?)"
-                  + " group by NomeDestinatario"
-                  + " order by nm desc;");
-
-       } catch (SQLException e) {System.err.println(e.getMessage());} 
     }
-
+    
     public boolean inserisciMessaggioDB(Message m){
     
         try {

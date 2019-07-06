@@ -23,7 +23,7 @@ import javafx.application.Platform;
  */
 public class TabellaMessaggi extends TableView<CampiTabella> {
     
-    private static ObservableList<CampiTabella> list_messages ; 
+    public static ObservableList<CampiTabella> list_messages ; 
 
     public TabellaMessaggi(String stile) {
         
@@ -52,17 +52,13 @@ public class TabellaMessaggi extends TableView<CampiTabella> {
     
     
     
-    public static synchronized void inserisci(Message m){
+    public static synchronized void inserisci(CampiTabella c){
         Platform.runLater(() -> {
-
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-mm-dd hh:mm:ss");
-            CampiTabella ct =new CampiTabella(m.getMittente(),m.getTesto(),dtf.format(m.getTime()));
-            list_messages.add(ct); 
+            list_messages.add(c); 
         });
     }
 
     public void pulisci(){this.list_messages.clear();}
-
    
     
 }

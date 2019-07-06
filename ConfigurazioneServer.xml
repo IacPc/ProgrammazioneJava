@@ -1,0 +1,12 @@
+<Server.ParamConfServer>
+  <porta_ascolto>8080</porta_ascolto>
+  <pDB>
+    <nomeDB>prog_av</nomeDB>
+    <passDB></passDB>
+    <portadb>3306</portadb>
+  </pDB>
+  <pGR>
+    <giornigrafo>15</giornigrafo>
+    <quantiutenti>5</quantiutenti>
+  </pGR>
+</Server.ParamConfServer>

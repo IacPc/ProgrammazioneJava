@@ -15,14 +15,14 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class CampiGrafo implements Serializable{
     String nome;
-    int numeroMessaggi;
+    long numeroMessaggi;
 
-    public CampiGrafo(String n, int numero) {
+    public CampiGrafo(String n, long numero) {
         this.nome = n;
         this.numeroMessaggi =numero;
     }
     
     public String getNome(){return nome;}
-    public int getNumeroMessaggi(){return numeroMessaggi;}
+    public long getNumeroMessaggi(){return numeroMessaggi;}
     
 }

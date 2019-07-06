@@ -5,26 +5,29 @@
  */
 package Client;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
  * @author Iacopo
  */
-public  class CampiTabella {
-        private final SimpleStringProperty nome;
-        private final SimpleStringProperty dataora;
-        private final SimpleStringProperty testo;
+public  class CampiTabella implements Serializable {
+        private final String nome;
+        private final String dataora;
+        private final String testo;
 
 
         public CampiTabella(String nome, String testo, String daor) {
-            this.nome =new SimpleStringProperty(nome);
-            this.testo =new SimpleStringProperty(testo);
-            this.dataora = new SimpleStringProperty(daor);
+            this.nome =nome;
+            this.testo =testo;
+            this.dataora = daor;
         }
-        public String getNome(){return nome.get();}
-        public String getDataora(){return dataora.get();}
-        public String getTesto(){return testo.get();}
+        public String getNome(){return nome;}
+        public String getDataora(){return dataora;}
+        public String getTesto(){return testo;}
 
 
     }
