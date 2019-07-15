@@ -11,17 +11,15 @@ import java.util.ArrayList;
  *
  * @author Iacopo
  */
-public class Message_CHAT  extends Message{
-    String testo;
-
-    public Message_CHAT(String Testo, Type mt, String m, String d) {
-        super(mt, m, d);
+public class Message_CHAT extends Message{
+    private String testo;
+    public Message_CHAT(String Testo, String m, String d) {
+        super(Type.CHAT, m, d);
         this.testo = Testo;
     }
     public String getTesto(){
         return this.testo;
     }       
     public ArrayList getCampi(){return null;}
-
     
 }

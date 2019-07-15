@@ -15,6 +15,7 @@ import java.nio.file.Files;
 
 
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.xml.*;
@@ -35,14 +36,18 @@ inviati da un determinato utente
 */
 public class GestoreUtente extends Thread {
     
-    Socket sock;
-    ObjectOutputStream invia;
-    ObjectInputStream ricevi;
-    String utente;
-    public GestoreUtente(Socket sock ) throws IOException,ClassNotFoundException{
+    private Socket sock;
+    private ObjectOutputStream invia;
+    private  ObjectInputStream ricevi;
+    private String utente;
+    private int prog;
+    private static GestoreDB gDB;
+
+    public GestoreUtente(Socket sock,String conn,String pwd,int port) throws SQLException, IOException,ClassNotFoundException{
         this.sock = sock;
         ricevi = new ObjectInputStream(sock.getInputStream());
         invia = new ObjectOutputStream(sock.getOutputStream());
+        gDB =new GestoreDB(conn,pwd,port);
     }
     
      
@@ -59,7 +64,6 @@ public class GestoreUtente extends Thread {
                         if(Server.inserisci_utente(utente, this)){
                             ArrayList al =Server.crea_ar_list();
                             Message m = new Message_OK(al);
-                            Server.inserisciutenteDB(utente);
                             invia.writeObject(m);
                             Server.broadcast(msg);
                             
@@ -85,7 +89,9 @@ public class GestoreUtente extends Thread {
                             System.out.println(msg.getMittente()+" scrive a "+msg.getDest() +": "+msg.getTesto());
 
                             Server.invia_chat(msg);
-                            Server.inserisciMessaggioDB(msg);
+                            if(!inserisciMessaggioDB(msg,this.prog++))
+                                System.err.println("Messagio non inserito nel db");
+;
                         break;
                         
                         case LOG:
@@ -111,7 +117,8 @@ public class GestoreUtente extends Thread {
                         break;
                         
                         case STAT:
-                              ArrayList<CampiGrafo> al = Server.getStatistiche();
+                              System.out.println("ricevuta richiesta aggiornamento statistiche");
+                              ArrayList<CampiGrafo> al = getStatistiche();
                               invia_msg(new MessageSTAT(null,al));
                                 
                         break;
@@ -144,10 +151,22 @@ public class GestoreUtente extends Thread {
         }
 
     }
+    //funzioni di utilità per il db
+
     
+   public static synchronized boolean inserisciMessaggioDB(Message m,int i){
+       return gDB.inserisciMessaggioDB(m,i);
+    } 
     
+    public static synchronized ArrayList getStatistiche(){
     
-    
+        try {
+            return  gDB.aggiornaInterazioneUtente(Server.pcs.pGR.giornigrafo,
+                                                  Server.pcs.pGR.quantiutenti);
+        } catch (Exception e) {e.printStackTrace();return null;
+        }
+       
+    }
     
     
 }

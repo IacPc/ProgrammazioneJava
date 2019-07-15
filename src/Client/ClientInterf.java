@@ -12,7 +12,6 @@ import java.net.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -47,7 +46,8 @@ public class ClientInterf  extends Application {
 
    private  GestoreServer gest_ser;
    private  static String nomeutente;
-   private static XStream xs;
+   private  XStream xs;
+   private  int numero_mess;
    
    private  Pane pannello_chat;
    private  Pane pannello_stat;
@@ -235,7 +235,7 @@ public class ClientInterf  extends Application {
                                             gest_ser.get_localadd(),nomeutente);
                     
                     try {
-                        Message m=new Message_CHAT(testo,Type.CHAT,nomeutente,dest);
+                        Message m=new Message_CHAT(testo,nomeutente,dest);
                         gest_ser.invia_msg(m);
                         ins_in_tabella(m);
                         gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
@@ -301,7 +301,6 @@ public class ClientInterf  extends Application {
                 } catch (IOException e) {e.printStackTrace();
                 }
                list_utenteon.getItems().clear();
-               tab_msg.pulisci();
                gest_ser.chiudi();
                gest_ser=null;
             }
@@ -311,6 +310,7 @@ public class ClientInterf  extends Application {
         stage.show();
     
     }
+   
    
     public static void main(String[] args) throws Exception {
         launch(args);
@@ -366,8 +366,9 @@ public class ClientInterf  extends Application {
         if(nm==null)
            return; 
         for(int i =0;i< nm.size();i++) {
-            if(!nm.get(i).equals(nomeutente))
-                list_utenteon.getItems().add(nm.get(i));
+            String s=nm.get(i);
+            if(!s.equals(nomeutente))
+                list_utenteon.getItems().add(s);
         }
     }
     
@@ -383,7 +384,7 @@ public class ClientInterf  extends Application {
     }    
    
     public static void ins_in_tabella(Message m){
-        DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy-mm-dd hh:mm:ss");;
+        DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");;
 
         tab_msg.inserisci(new CampiTabella(m.getMittente(), m.getTesto(),dtf.format( m.getTime())));
     }

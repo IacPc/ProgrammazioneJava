@@ -86,6 +86,8 @@ public class GestoreServer extends Thread{
                         
                     break;
                     case STAT:
+                        System.out.println("ricevuto aggiornamento statistiche:"
+                        + msg.getCampi().size());
                         
                         Platform.runLater(() -> {
                             ClientInterf.aggiornagrafo(msg.getCampi());

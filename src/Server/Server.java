@@ -42,8 +42,7 @@ public class Server {
     private static int port = 8080;
     private static ServerSocket listener;
     private static HashMap<String,GestoreUtente> Lgestut = new HashMap();
-    private static GestoreDB gDB;
-    private static ParamConfServer pcs;
+    public static ParamConfServer pcs;
     public static void main(String[] args) {
         try{
             XStream xs =new XStream();
@@ -51,7 +50,6 @@ public class Server {
                 return;
             pcs = (ParamConfServer)(xs).fromXML(new String(Files.readAllBytes(
                                            Paths.get("./ConfigurazioneServer.xml"))));
-            gDB  = new GestoreDB(pcs.pDB.nomeDB,pcs.pDB.passDB,pcs.porta_ascolto);
             listener= new ServerSocket(pcs.porta_ascolto);
             System.out.println("Chat server avviato e in ascolto sulla porta:"+pcs.porta_ascolto);
 
@@ -60,7 +58,9 @@ public class Server {
                 
                 System.out.println("nuova richiesta di connessione ricevuta");
                 
-                GestoreUtente gu =new GestoreUtente(s);
+                GestoreUtente gu =new GestoreUtente(s,pcs.pDB.nomeDB,
+                                                    pcs.pDB.passDB,
+                                                    pcs.pDB.portadb);
                 gu.start();
             }
            
@@ -129,24 +129,9 @@ public class Server {
         
     }
   
-    //funzioni di utilità per il db
     
-    public static synchronized boolean inserisciMessaggioDB(Message m){
-       return gDB.inserisciMessaggioDB(m);
-    }
     
-    public static synchronized boolean inserisciutenteDB(String n){
-        return gDB.inserisciutente(n);    
-    }
     
-    public static synchronized ArrayList getStatistiche(){
-    
-        try {
-            return  gDB.aggiornaInterazioneUtente(pcs.pGR.giornigrafo,pcs.pGR.quantiutenti);
-        } catch (Exception e) {e.printStackTrace();return null;
-        }
-       
-    }
     public static boolean validaXML(String doc,String xsd){
         try{
             DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();

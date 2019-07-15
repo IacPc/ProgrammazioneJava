@@ -15,21 +15,17 @@ import java.util.ArrayList;
 public class GestoreDB {
     private static Connection connessioneADatabase; 
     private static PreparedStatement statementinseriscimessaggi; 
-    private static PreparedStatement statementinserisciutenti; 
     private static PreparedStatement statementaggiornainterazione;
     
-    public  GestoreDB(String n,String pw,int porta)throws SQLException {
+    public  GestoreDB(String nomeconn,String pw,int porta)throws SQLException {
     
-            connessioneADatabase = DriverManager.getConnection("jdbc:mysql://localhost:"+3306+"/"+n,"root",pw);   
+            connessioneADatabase = DriverManager.getConnection("jdbc:mysql://localhost:"+porta+"/"+nomeconn,"root",pw);   
             statementinseriscimessaggi = connessioneADatabase.prepareStatement(
                          "INSERT INTO `prog_av`.`messaggi` (`NomeMittente`,"
-                         + "`NomeDestinatario`, `DataInvio`, `Testo`)"
-                         + " VALUES (?, ?, ?, ?);"
+                         + "`NomeDestinatario`, `DataInvio`, `Testo`,`Prog`)"
+                         + " VALUES (?, ?, ?, ?,?);"
                     );
-            statementinserisciutenti = connessioneADatabase.prepareStatement(
-                       "INSERT INTO `prog_av`.`utenticonnessi` "
-                       + "(`NomeUtente`, `MessaggiRicevuti`) VALUES (?, '0');"
-                    );
+            
             statementaggiornainterazione=connessioneADatabase.prepareStatement(
                            "select NomeDestinatario as nd,count(*) as nm"
                          + " FROM prog_av.messaggi where DataInvio >= (current_date - ?)"
@@ -38,7 +34,7 @@ public class GestoreDB {
 
     }
     
-    public boolean inserisciMessaggioDB(Message m){
+    public boolean inserisciMessaggioDB(Message m,int i){
     
         try {
             statementinseriscimessaggi.setString(1, m.getMittente());
@@ -47,30 +43,16 @@ public class GestoreDB {
             String t = m.getTime().format(formatter);
             statementinseriscimessaggi.setString(3, t);
             statementinseriscimessaggi.setString(4, m.getTesto());
-            
+            statementinseriscimessaggi.setInt(5, i);
             return(statementinseriscimessaggi.executeUpdate()>=1);
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     
     }
     
-    public boolean inserisciutente(String n){
-    
-        try {
-            statementinserisciutenti.setString(1, n);
-            return(statementinserisciutenti.executeUpdate()>=1);
-        } catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException e) {
-            System.out.println("utente già presente nel db");
-            return false;
-        }catch(SQLException se){
-            se.printStackTrace();
-            return false;
-        }
-    
-    
-    }
-    
+   
     public ArrayList aggiornaInterazioneUtente(int giorni,int quanti ){
         ArrayList<CampiGrafo> al = new ArrayList<>();
         try {

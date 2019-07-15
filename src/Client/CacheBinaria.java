@@ -34,7 +34,6 @@ public class CacheBinaria implements Serializable{
         for(int i =0;i<ui.size();i++){
            long val= Math.round( ui.get(i).getPieValue());
            ultime_interazioni.add(new CampiGrafo(ui.get(i).getName(),val));
-
         }
 
     }
