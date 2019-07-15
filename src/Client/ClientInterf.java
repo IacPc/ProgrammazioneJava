@@ -23,6 +23,7 @@ import javax.xml.validation.SchemaFactory;
 import org.w3c.dom.Document;
 
 import javafx.application.*;
+import javafx.collections.ObservableList;
 import javafx.geometry.*;
 
 import javafx.scene.Scene;
@@ -160,7 +161,9 @@ public class ClientInterf  extends Application {
             public void handle(ActionEvent evt) {
                 if(gest_ser!=null){
                     try {
+                        
                         gest_ser.invia_msg(new MessageSTAT(nomeutente,null));
+                        System.out.println("Inviata richiesta aggiornamento statistiche");
                         EventoLog ev = new EventoLog(TipoEvento.AGGSTAT_CLICK,
                                         gest_ser.get_localadd(),nomeutente);
                         gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
@@ -221,6 +224,7 @@ public class ClientInterf  extends Application {
 
         scrollut.setContent(list_utenteon);
         list_utenteon.setPrefWidth(150);
+        list_utenteon.getSelectionModel().setSelectionMode( SelectionMode.MULTIPLE);
         txt_invia.setPrefWidth(500);
         
         btn_invia.setOnAction(new EventHandler<ActionEvent>() {
@@ -228,18 +232,31 @@ public class ClientInterf  extends Application {
             public void handle(ActionEvent evt) {
                 String testo =txt_invia.getText();
                 
-                String dest =list_utenteon.getSelectionModel().getSelectedItem();
                
                 if(gest_ser != null){
                     EventoLog ev = new EventoLog(TipoEvento.INVIA_CLICK,
                                             gest_ser.get_localadd(),nomeutente);
                     
                     try {
-                        Message m=new Message_CHAT(testo,nomeutente,dest);
-                        gest_ser.invia_msg(m);
-                        ins_in_tabella(m);
+                        Type t;
+                        ObservableList<String> l =list_utenteon.getSelectionModel().getSelectedItems();
+                        System.out.println("Selezionati "+ l.size() +" utenti");
+                        if(l.size()>1)
+                            t=Type.CHAT_GROUP;
+                        else
+                            t=Type.CHAT;
+                        for(int i =0;i<l.size();i++){
+                            Message m=new Message_CHAT(testo,t,nomeutente,l.get(i));
+                        
+                            gest_ser.invia_msg(m);
+                            System.out.println("Messaggio inviato a "+m.getDest());
+
+                            ins_in_tabella(m);
+                        }
                         gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
+
                     } catch (IOException e) {
+                        e.printStackTrace();
                         txt_invia.setText("invio fallito");
                         
                     }

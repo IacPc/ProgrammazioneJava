@@ -93,7 +93,14 @@ public class GestoreUtente extends Thread {
                                 System.err.println("Messagio non inserito nel db");
 ;
                         break;
-                        
+                        case CHAT_GROUP:
+                            System.out.println(msg.getMittente()+" scrive a "+msg.getDest() +": "+msg.getTesto());
+
+                            Server.invia_chat(msg);
+                            if(!inserisciMessaggioDB(msg,this.prog++))
+                                System.err.println("Messagio non inserito nel db");
+;
+                        break;
                         case LOG:
                             String s =new String( msg.getTesto()+'\n');
                             System.out.print(s);

@@ -43,6 +43,7 @@ public class GestoreServer extends Thread{
             while(true){
                 
                 Message msg =(Message)ricevi.readObject();
+                System.out.println("ricevuto mess");
                 switch (msg.getTipo()){
                     case OK:
                         System.out.println("connessione accettata dal server");
@@ -76,11 +77,24 @@ public class GestoreServer extends Thread{
                             ClientInterf.elimina_utente(msg.getMittente());
                         });
                     break;
-                    case CHAT:
+                    case CHAT :
                         System.out.println("ricevuto messaggio di tipo chat");
 
                         Platform.runLater(() -> {
                              ClientInterf.ins_in_tabella(msg);
+
+                        });
+                        
+                    break;
+                      case CHAT_GROUP :
+                        System.out.println("ricevuto messaggio di tipo chat_group");
+
+                        Platform.runLater(() -> {
+                            Message_CHAT mc = new Message_CHAT(msg.getTesto(),
+                                    Type.CHAT_GROUP,
+                                    msg.getMittente()+"(GROUP)", 
+                                    null);
+                            ClientInterf.ins_in_tabella(mc);
 
                         });
                         
@@ -92,7 +106,10 @@ public class GestoreServer extends Thread{
                         Platform.runLater(() -> {
                             ClientInterf.aggiornagrafo(msg.getCampi());
                         }); 
-                
+                     break;
+                     default:
+                        System.err.println("casino");
+
                 }
  
             }

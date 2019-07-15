@@ -10,5 +10,5 @@ package Messaggi;
  * @author Iacopo
  */
 public enum Type {
-   LOG_IN,LOG_OUT,CHAT,OK,ERR,LOG,STAT
+   LOG_IN,LOG_OUT,CHAT,CHAT_GROUP,OK,ERR,LOG,STAT
 }
