@@ -5,7 +5,6 @@
  */
 package Client;
 
-import Client.Log.*;
 import client_server.*;
 
 import java.util.*;
@@ -45,6 +44,7 @@ import javafx.stage.*;
  *
  * @author Iacopo
  */
+
 public class ClientInterf  extends Application {
 
    private  GestoreServer gest_ser;
@@ -95,19 +95,19 @@ public class ClientInterf  extends Application {
 
    //Grafo
    private Button btnAggiorna;
-   private static GrafoInterazioni grafo;
+   private static GrafoMessaggiRicevuti grafo;
    private ParamConfClient parametri;
    
    private CacheBinaria cache;
    
-   void cambia_scena(Stage s,Scene sc){
+   void cambia_scena(Stage s,Scene sc){ //1
         s.setScene(sc);
         s.show();
         System.out.println("cambio scena");          
        
-   }
+   } 
    
-   private void init_menu(Stage s){
+   private void init_menu(Stage s){//2
         menu_stat = new MenuBar();
         mn_stat = new Menu("statistiche");
         itemGrafo = new MenuItem("Grafo");
@@ -150,7 +150,7 @@ public class ClientInterf  extends Application {
                
    }
    
-   public void init_stat(){
+   public void init_stat(){//3
       vb_statistiche = new VBox();
       pannello_stat = new Pane();  
       btnAggiorna=new Button("Aggiorna");
@@ -174,7 +174,7 @@ public class ClientInterf  extends Application {
             }
         });
         
-      grafo= new GrafoInterazioni();
+      grafo= new GrafoMessaggiRicevuti();
      
       vb_statistiche.getChildren().addAll(menu_stat,grafo,btnAggiorna);
       pannello_stat.getChildren().addAll(vb_statistiche);
@@ -183,7 +183,7 @@ public class ClientInterf  extends Application {
    
    }
    
-   public void istanziaelementichat(){
+   public void istanziaelementichat(){//4
         bp_connessione = new BorderPane();
         pannello_chat = new Pane();
         
@@ -219,24 +219,26 @@ public class ClientInterf  extends Application {
         txt_invia.setPrefWidth(500);
    
    }
-   private void azioneBtnInvia(){
+   private void azioneBtnInvia(){//5
             String testo =txt_invia.getText();
-                
-               
             if(gest_ser != null){
                 EventoLog ev = new EventoLog(TipoEvento.INVIA_CLICK,
                                             gest_ser.get_localadd(),nomeutente);
                     
                 try {
                     ObservableList<String> l =list_utenteon.getSelectionModel().getSelectedItems();
-                    System.out.println("Selezionati "+ l.size() +" utenti");
+                    if(l==null){
+                        System.err.println("Slezionare un utente");
+                        return;
+                    }
+                  
                     Message m=null;
                     for(int i =0;i<l.size();i++){
                         m=new Message_CHAT(testo,Type.CHAT,nomeutente,l.get(i));
                         gest_ser.invia_msg(m);
                     }
                     ins_in_tabella(m);
-                        
+    
                     gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
                     txt_invia.clear();
                 } catch (IOException e) {
@@ -246,120 +248,7 @@ public class ClientInterf  extends Application {
                     
             }    
     }
-    
-   private void azioneBtnElimina(){
-        EventoLog ev = new EventoLog(TipoEvento.DEL_CLICK, 
-                                     gest_ser.get_localadd(),
-                                     nomeutente);
-        Message m = new MessageLOG(xs.toXML(ev));
-         try{
-            gest_ser.invia_msg(m);
-            CampiTabella ctbl;
-            ctbl=tab_msg.getSelectionModel().getSelectedItem();
-            if(ctbl!=null){
-                String ut = ctbl.getNome();
-                String d = ctbl.getDataora();
-                tab_msg.cancella(ut,d);
-                if(ut.equals(nomeutente)){
-                    MessageDEL mess = new MessageDEL(ut, d);
-                    gest_ser.invia_msg(mess);
-               }
-            }
-        }catch(IOException ie){
-            ie.printStackTrace();
-        }
-      
-    }
-    
-   public void initareachat(){
-        
-        istanziaelementichat();
-        
-        btn_connetti.setOnAction(evt->{connetti(); });
-
-        
-        btn_invia.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent evt) {
-                azioneBtnInvia();
-            }
-        });
-        btn_elimina.setOnAction(new EventHandler<ActionEvent>() { 
-            public void handle(ActionEvent evt){
-                azioneBtnElimina();
-            }
-            
-        });
-      
-        hbBtn_txt.getChildren().addAll(txt_invia,btn_invia,btn_elimina);
-        vb_int_chat.getChildren().addAll(tab_msg,hbBtn_txt);
-        hb_chatBox.getChildren().addAll(list_utenteon,vb_int_chat);
-        vb_scenario_chat.getChildren().addAll(menu_chat,bp_connessione,hb_chatBox);
-        pannello_chat.getChildren().add(vb_scenario_chat);
-        
-        scena_connesso = new Scene(pannello_chat);
-    }
-   
-   public void init_tabmsg() {
-        tab_msg = new TabellaMessaggi(parametri.fontCelleTabella);
-        tab_msg.setOnMouseClicked( 
-                new EventHandler<MouseEvent>(){
-                    @Override
-                    public void handle(MouseEvent mev){
-                        EventoLog ev = new EventoLog(TipoEvento.TABLE_CLICK, 
-                                                     gest_ser.get_localadd(),
-                                                     nomeutente);
-                        Message m = new MessageLOG(xs.toXML(ev));
-                        try{
-                            gest_ser.invia_msg(m);
-                           
-                        }catch(IOException ie){
-                           ie.printStackTrace();
-                        }
-                    }
-                
-                
-                });
- 
-    }
-   
-    @Override
-    public void start(Stage stage) throws Exception{
-        xs= new XStream();
-        xs.useAttributeFor(EventoLog.class,"tipo");
-        caricaParametriConfigurazione();
-        init_tabmsg();
-        init_menu(stage);
-        init_stat();
-        initareachat();
-
-        stage.setOnCloseRequest((WindowEvent) -> {
-            if(gest_ser!=null){
-                try {
-                   EventoLog ev = new EventoLog(TipoEvento.EXIT_CLICK,
-                                        gest_ser.get_localadd(),nomeutente);
-                   gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
-                   gest_ser.invia_msg(new MessageLOGIN_OUT(Type.LOG_OUT,nomeutente));
-                   salvaInCache();
-                } catch (IOException e) {e.printStackTrace();
-                }
-               list_utenteon.getItems().clear();
-               gest_ser.chiudi();
-               gest_ser=null;
-            }
-        });
-        leggiDallaCache();
-        stage.setTitle("MyChat");
-        stage.setScene(scena_connesso);
-        stage.show();
-    
-    }
-   
-    public static void main(String[] args) throws Exception {
-        launch(args);
-    }
-   
-    private boolean connetti(){
+   private boolean azioneBtnConnetti(){//6
         
        try{
            if(gest_ser==null){//connettersi al serv. di mess.
@@ -402,8 +291,118 @@ public class ClientInterf  extends Application {
         }
       return true;
     }
+        
+   private void azioneBtnElimina(){//7
+        EventoLog ev = new EventoLog(TipoEvento.DEL_CLICK, 
+                                     gest_ser.get_localadd(),
+                                     nomeutente);
+        Message m = new MessageLOG(xs.toXML(ev));
+         try{
+            gest_ser.invia_msg(m);
+                   
+             String s= tab_msg.getNomeUt();
+             String o= tab_msg.getOra();
+             tab_msg.cancella();
+             if(s.equals(nomeutente)){
+                    MessageDEL mess = new MessageDEL(s, o);
+                    gest_ser.invia_msg(mess);
+             }
+        }catch(IOException ie){
+            ie.printStackTrace();
+        }
+      
+    }
     
-    public static synchronized void set_lut(ArrayList<String> nm){
+   public void initareachat(){//8
+        
+        istanziaelementichat();
+        
+        btn_connetti.setOnAction(evt->{azioneBtnConnetti(); });
+
+        
+        btn_invia.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent evt) {
+                azioneBtnInvia();
+            }
+        });
+        btn_elimina.setOnAction(new EventHandler<ActionEvent>() { 
+            public void handle(ActionEvent evt){
+                azioneBtnElimina();
+            }
+            
+        });
+      
+        hbBtn_txt.getChildren().addAll(txt_invia,btn_invia,btn_elimina);
+        vb_int_chat.getChildren().addAll(tab_msg,hbBtn_txt);
+        hb_chatBox.getChildren().addAll(list_utenteon,vb_int_chat);
+        vb_scenario_chat.getChildren().addAll(menu_chat,bp_connessione,hb_chatBox);
+        pannello_chat.getChildren().add(vb_scenario_chat);
+        
+        scena_connesso = new Scene(pannello_chat);
+    }
+   
+   public void init_tabmsg() {//8
+        tab_msg = new TabellaMessaggi(parametri.fontCelleTabella);
+        tab_msg.setOnMouseClicked( 
+                new EventHandler<MouseEvent>(){
+                    @Override
+                    public void handle(MouseEvent mev){
+                        if(gest_ser!=null){
+                            EventoLog ev = new EventoLog(TipoEvento.TABLE_CLICK, 
+                                                         gest_ser.get_localadd(),
+                                                         nomeutente);
+                            Message m = new MessageLOG(xs.toXML(ev));
+                            try{
+                                gest_ser.invia_msg(m);
+
+                            }catch(IOException ie){
+                               ie.printStackTrace();
+                            }
+                        }
+                    }
+                
+                
+                });
+ 
+    }
+   
+    @Override
+   public void start(Stage stage) throws Exception{
+        xs= new XStream();
+        xs.useAttributeFor(EventoLog.class,"tipo");
+        caricaParametriConfigurazione();
+        init_tabmsg();
+        init_menu(stage);
+        init_stat();
+        initareachat();
+
+        stage.setOnCloseRequest((WindowEvent) -> {
+            if(gest_ser!=null){
+                try {
+                   EventoLog ev = new EventoLog(TipoEvento.EXIT_CLICK,
+                                        gest_ser.get_localadd(),nomeutente);
+                   gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
+                   gest_ser.invia_msg(new MessageLOGIN_OUT(Type.LOG_OUT,nomeutente));
+                   salvaInCache();
+                } catch (IOException e) {e.printStackTrace();
+                }
+               list_utenteon.getItems().clear();
+               gest_ser.chiudi();
+               gest_ser=null;
+            }
+        });
+        leggiDallaCache();
+        stage.setTitle("MyChat");
+        stage.setScene(scena_connesso);
+        stage.show();
+    
+    }
+   public static void main(String[] args) throws Exception {
+        launch(args);
+    }
+
+   public static synchronized void set_lut(ArrayList<String> nm){//10
         if(nm==null)
            return; 
         for(int i =0;i< nm.size();i++) {
@@ -413,27 +412,26 @@ public class ClientInterf  extends Application {
         }
     }
     
-    public static synchronized void aggiorna_utenti(String s){
+   public static synchronized void aggiorna_utenti(String s){//11
         list_utenteon.getItems().add(s);
     }
-    
-    public static synchronized boolean elimina_utente(String u){
+   public static synchronized boolean elimina_utente(String u){//12
         list_utenteon.getItems().remove(u);
         return list_utenteon.getItems().isEmpty();
     }    
    
-    public static void ins_in_tabella(Message m){
-        tab_msg.inserisci(new CampiTabella(m.getMittente(), m.getTesto(),m.getTime()));
+   public static void ins_in_tabella(Message m){//13
+        tab_msg.inserisci(m.getMittente(), m.getTesto(),m.getTime());
     }
-    public static void rimuovi_da_tabella(Message m){
+   public static void rimuovi_da_tabella(Message m){///14
         tab_msg.cancella(m.getMittente(),m.getTime());
     }
     
-    public static void aggiornagrafo(ArrayList<CampiGrafo> al ){
+   public static void aggiornagrafo(ArrayList<CampiGrafo> al ){//15
         grafo.aggiungiuntenti(al);
-    }
+   }
   
-    public void caricaParametriConfigurazione(){
+   public void caricaParametriConfigurazione(){//16
         validaXML();
         XStream xs =new XStream();
         try{  
@@ -443,7 +441,7 @@ public class ClientInterf  extends Application {
 
     }
 
-    private void validaXML(){
+   private void validaXML(){//17
         try{
             DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI); 
@@ -453,7 +451,7 @@ public class ClientInterf  extends Application {
         } catch (Exception e) {System.out.println("Errore di validazione: " + e.getMessage());}
     }
     
-    public void salvaInCache(){
+   public void salvaInCache(){//18
       try(FileOutputStream scriviFile = new FileOutputStream("./CacheLocale.bin");
           ObjectOutputStream oggettoScritto = new ObjectOutputStream(scriviFile);
          ){
@@ -461,19 +459,23 @@ public class ClientInterf  extends Application {
             oggettoScritto.writeObject(new CacheBinaria(
                                                         txt_invia.getText(), 
                                                         grafo.getUtenti(),
-                                                        tab_msg.list_messages,
+                                                        tab_msg.getMessaggi(),
                                                         nomeutente)
                                                         );
         } catch(IOException ioe){System.out.println(ioe.getMessage());}
     }
-    public void leggiDallaCache(){
+   public void leggiDallaCache(){//19
         try(FileInputStream leggiFile = new FileInputStream("./CacheLocale.bin");
             ObjectInputStream oggettoLetto = new ObjectInputStream(leggiFile);){
             cache = (CacheBinaria) oggettoLetto.readObject();
-            
-            for(int i =0;i<cache.ultimi_mess.size();i++)
-                tab_msg.inserisci(cache.ultimi_mess.get(i));
-            
+            String n,o,t;
+
+            for(int i =0;i<cache.ultimi_mess.size();i++){
+                n=cache.ultimi_mess.get(i).getNome();
+                o=cache.ultimi_mess.get(i).getDataora();
+                t=cache.ultimi_mess.get(i).getTesto();
+                tab_msg.inserisci(n,o,t);
+            }
             txt_invia.setText(cache.testoLasciatoincasella);
             txtconnetti.setText(cache.ultimouser);
             grafo.aggiungiuntenti(cache.ultime_interazioni);
@@ -481,5 +483,33 @@ public class ClientInterf  extends Application {
           catch(ClassNotFoundException cnfe){System.out.println(cnfe.getMessage());}
   
     }
+   
 }
 
+//1 Funzione utilizzata per cambiare scena tra chat e grafo
+//2 Funzione utilizzata per inizializzare i vari elementi del menu
+//  superiore
+//3 Funzione utilizzata per inizializzare il grafo e
+//  l'interfaccia 
+//4 Funzione per l'istanziazione dei vari elementi grafici, impiegata a parte 
+//  per limitare la dimensione della funzione initareachat
+//5 routine che definisce il comportamento del bottone invia
+//6 routine che definisce il comportamento del bottone connetti
+//7 routine che definisce il comportamento del bottone elimina
+//8 funzione Backend principale per l'inizializzazione dell' interf. della chat
+//9 funzione responsabile dell'inizializzazione della tabella messaggi
+//10 funzioen utilizzata per costruire la lista degli utenti connessi a partire
+//   dall'ArrayList contenuta nel messaggio di tipo OK
+//11 funzione utilizzata per aggiornare la lista utenti ad ogni login richiamta
+//   ogni volta che si riceve un messagio di tipo LOGIN
+//12 funzione utilizzata per aggiornare la lista utenti ad ogni logout richiamta
+//   ogni volta che si riceve un messagio di tipo LOGOUT
+//13 funzione utilizzata per inserire un messaggio nella tabella
+//14 funzione utilizzata per rimuovere un messaggio dalla tabella   
+//15 funzione utilizza per aggiornare il grafo a partire dalla lista contenuta
+//   nel messaggio di tipo STAT ricevuto dal server
+//16 funzione utilizzata per estrarre i parametri di configurazione da file xml
+//17 funzione utilizzata per validare i parametri di configurazione in xml
+//18 funzione che crea\sovrascrive il file contenente la cache locale .bin
+//19 funzione utilizzata per costruire la variabile cache leggendo la cache locale 
+//   all'avvio.

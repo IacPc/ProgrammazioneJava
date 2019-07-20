@@ -1,6 +1,6 @@
-<Log.EventoLog tipo="INVIA_CLICK">
+<EventoLog tipo="INVIA_CLICK">
   <nome>MyChat</nome>
   <ip>127.0.0.1</ip>
   <utente>pluto</utente>
   <dataora>2019-02-03 11:26:17</dataora>
-</Log.EventoLog>
+</EventoLog>

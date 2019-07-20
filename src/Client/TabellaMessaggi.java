@@ -21,7 +21,7 @@ import javafx.application.Platform;
  */
 public class TabellaMessaggi extends TableView<CampiTabella> {
     
-    public static ObservableList<CampiTabella> list_messages ; 
+    private static ObservableList<CampiTabella> list_messages ; 
 
     public TabellaMessaggi(String stile) {
         
@@ -50,17 +50,22 @@ public class TabellaMessaggi extends TableView<CampiTabella> {
     
     
     
-    public static synchronized void inserisci(CampiTabella c){
+    public static synchronized void inserisci(String n,String d,String t){
         Platform.runLater(() -> {
-            list_messages.add(c); 
+            list_messages.add(new CampiTabella(n, d, t));
         });
     }
 
-    public void pulisci(){this.list_messages.clear();}
+    public void pulisci(){list_messages.clear();}
    
-    public boolean cancella(String n,String o){
+    public void cancella(){
+        list_messages.remove(getSelectionModel().getSelectedIndex());
+    }
+    
+    public void cancella(String n,String o){
         CampiTabella ct;
         int i=0;
+     
         for(;i<list_messages.size();i++){
             ct = list_messages.get(i);
             if(ct.getDataora().equals(o) && ct.getNome().equals(n)){
@@ -69,7 +74,11 @@ public class TabellaMessaggi extends TableView<CampiTabella> {
             }
         }
        
-        return(i<list_messages.size());
     }
     
+    public String getNomeUt(){return getSelectionModel().getSelectedItem().getNome(); }
+    public String getOra(){return getSelectionModel().getSelectedItem().getDataora();}
+    public ObservableList<CampiTabella> getMessaggi(){return list_messages;}
+ 
 }
+

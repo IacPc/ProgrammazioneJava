@@ -1,7 +1,7 @@
 <?xml version="1.0"  encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
  <!-- evento.xsd -->
- <xsd:element name="Log.EventoLog">
+ <xsd:element name="EventoLog">
   <xsd:complexType>
    <xsd:all>
    <xsd:element name="nome" type="xsd:string" />

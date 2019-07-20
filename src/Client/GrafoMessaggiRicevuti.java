@@ -14,11 +14,11 @@ import javafx.scene.chart.PieChart;
  *
  * @author Iacopo
  */
-public class GrafoInterazioni extends PieChart {
+public class GrafoMessaggiRicevuti extends PieChart {
     private static ObservableList<PieChart.Data> utenti =
                 FXCollections.observableArrayList(); 
 
-    public GrafoInterazioni() {
+    public GrafoMessaggiRicevuti() {
         super(utenti);
         setTitle("Attività Degli Utenti"); 
         setClockwise(true); //visione senso orario dei dati
@@ -40,6 +40,5 @@ public class GrafoInterazioni extends PieChart {
     } 
     
     public ObservableList getUtenti(){return this.utenti;}
-    
     
 }

@@ -5,7 +5,7 @@
  */
 package Client;
 
-import client_server.CampiGrafo;
+import client_server.*;
 import java.io.Serializable;
 
 import java.util.ArrayList;
