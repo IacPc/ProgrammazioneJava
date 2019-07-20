@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package Client;
-import Messaggi.Message;
 
-import java.time.format.DateTimeFormatter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -60,5 +58,18 @@ public class TabellaMessaggi extends TableView<CampiTabella> {
 
     public void pulisci(){this.list_messages.clear();}
    
+    public boolean cancella(String n,String o){
+        CampiTabella ct;
+        int i=0;
+        for(;i<list_messages.size();i++){
+            ct = list_messages.get(i);
+            if(ct.getDataora().equals(o) && ct.getNome().equals(n)){
+                list_messages.remove(i);
+                break;
+            }
+        }
+       
+        return(i<list_messages.size());
+    }
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Log;
+package Client.Log;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +19,7 @@ public class EventoLog implements Serializable {
     private String ip;
     private String utente;
     private String dataora;
-
+    private final String nome = "MyChat";
     public EventoLog(TipoEvento tipo, String ip, String utente) {
         this.tipo = tipo;
         this.ip = ip;

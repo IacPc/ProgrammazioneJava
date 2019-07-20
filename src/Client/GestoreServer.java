@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Client;
-import Messaggi.*;
+import client_server.*;
 
 import javafx.application.Platform;
 import java.net.*;
@@ -32,16 +32,11 @@ public class GestoreServer extends Thread{
     }
    
     public void run(){
-     
-
         try {
-            
-
             invia_login();
             System.out.println("login inviato al server");
             
             while(true){
-                
                 Message msg =(Message)ricevi.readObject();
                 System.out.println("ricevuto mess");
                 switch (msg.getTipo()){
@@ -56,7 +51,6 @@ public class GestoreServer extends Thread{
                             ClientInterf.set_lut(msg.getCampi());
 
                         });
-                        
                     break;
                     case ERR:
                         System.out.println("connessione rifiutata dal server");
@@ -70,7 +64,6 @@ public class GestoreServer extends Thread{
                         Platform.runLater(() -> {
                             ClientInterf.aggiorna_utenti(msg.getMittente());
                         });
-                        
                     break;
                     case LOG_OUT:
                         Platform.runLater(() -> {
@@ -84,37 +77,23 @@ public class GestoreServer extends Thread{
                              ClientInterf.ins_in_tabella(msg);
 
                         });
-                        
-                    break;
-                      case CHAT_GROUP :
-                        System.out.println("ricevuto messaggio di tipo chat_group");
-
-                        Platform.runLater(() -> {
-                            Message_CHAT mc = new Message_CHAT(msg.getTesto(),
-                                    Type.CHAT_GROUP,
-                                    msg.getMittente()+"(GROUP)", 
-                                    null);
-                            ClientInterf.ins_in_tabella(mc);
-
-                        });
-                        
                     break;
                     case STAT:
                         System.out.println("ricevuto aggiornamento statistiche:"
                         + msg.getCampi().size());
-                        
                         Platform.runLater(() -> {
                             ClientInterf.aggiornagrafo(msg.getCampi());
                         }); 
                      break;
-                     default:
-                        System.err.println("casino");
-
+                    case DEL:
+                        System.out.println("ricevuta richiesta eliminazione messaggio");
+                        Platform.runLater(() -> {
+                            ClientInterf.rimuovi_da_tabella(msg);
+                        }); 
+                    break;
                 }
- 
             }
-                 
-            
+             
         } catch (EOFException e) {
            System.out.println("Il server ha rifutato la connessione");
            synchronized(this){
@@ -123,10 +102,9 @@ public class GestoreServer extends Thread{
             notifyAll();
            }
         }catch (IOException | ClassNotFoundException e) {
-            System.out.println("chiusura della connessione");
+            System.out.println("connessione chiusa");
             return;
         }              
-    
     }
        
     public synchronized boolean invia_login() {
@@ -153,7 +131,6 @@ public class GestoreServer extends Thread{
         }
         return connesso_al_server;
     } 
-    
     public synchronized boolean chiudi(){
         connesso_al_server = false;
         in_attesa=true;

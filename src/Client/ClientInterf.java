@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 package Client;
-import Messaggi.*;
-import Log.*;
-import com.thoughtworks.xstream.XStream;
+
+import Client.Log.*;
+import client_server.*;
+
 import java.util.*;
 import java.net.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.format.DateTimeFormatter;
+
+import com.thoughtworks.xstream.XStream;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -48,7 +50,6 @@ public class ClientInterf  extends Application {
    private  GestoreServer gest_ser;
    private  static String nomeutente;
    private  XStream xs;
-   private  int numero_mess;
    
    private  Pane pannello_chat;
    private  Pane pannello_stat;
@@ -67,8 +68,7 @@ public class ClientInterf  extends Application {
    // Menu
    private  MenuBar menu_stat;
    private  Menu mn_stat;
-   private  MenuItem mi_top3;
-
+   private  MenuItem itemGrafo;
    private  MenuBar menu_chat ;
    private  Menu menuchatbox;
    private  MenuItem menusat;
@@ -87,10 +87,11 @@ public class ClientInterf  extends Application {
    private static ListView<String> list_utenteon;
    private  ScrollPane scrollut;
 
-   //campi casella di testo e bottone btn_invia
+   //campi casella di testo e bottoni btn_invia,btn_elimina
    private  HBox hbBtn_txt ;    
    private  TextField txt_invia;
    private static Button btn_invia;
+   private static Button btn_elimina;
 
    //Grafo
    private Button btnAggiorna;
@@ -109,7 +110,7 @@ public class ClientInterf  extends Application {
    private void init_menu(Stage s){
         menu_stat = new MenuBar();
         mn_stat = new Menu("statistiche");
-        mi_top3 = new MenuItem("Top 3");
+        itemGrafo = new MenuItem("Grafo");
         menu_chat = new MenuBar();
         menuchatbox = new Menu("ChatBox");
         menusat = new MenuItem("chat");
@@ -127,7 +128,7 @@ public class ClientInterf  extends Application {
             
         });
         
-        mi_top3.setOnAction(evt->{
+        itemGrafo.setOnAction(evt->{
             try{
                 EventoLog ev = new EventoLog(TipoEvento.MENU_CLICK,
                                         gest_ser.get_localadd(),nomeutente);
@@ -138,19 +139,16 @@ public class ClientInterf  extends Application {
                     System.out.println("non connesso al server");
             }finally{
                 cambia_scena(s,scena_grafo);
-
-                System.out.println("cambio scena");
             }
         });
         
         menu_chat.getMenus().add(mn_stat);
-        mn_stat.getItems().addAll(mi_top3);
+        mn_stat.getItems().addAll(itemGrafo);
         
         menu_stat.getMenus().add(menuchatbox);
         menuchatbox.getItems().addAll(menusat);
                
    }
-   
    
    public void init_stat(){
       vb_statistiche = new VBox();
@@ -201,24 +199,17 @@ public class ClientInterf  extends Application {
         vb_connessione = new VBox();
         
         btn_connetti = new Button("connetti");
-        btn_invia = new Button("Invia");
-
+        btn_invia = new Button("  Invia  ");
+        btn_elimina = new Button("Elimina");
+        
         list_utenteon = new ListView<String>();
         txt_invia= new TextField();
         txtconnetti= new TextField();
-   
-   }
-   
-   public void initareachat(){
-        
-        istanziaelementichat();
-        
         bp_connessione.setMargin(txtconnetti,new Insets(10,10,10,10));
         bp_connessione.setMargin(btn_connetti,new Insets(10,10,10,10));
         bp_connessione.setLeft(txtconnetti);
         bp_connessione.setCenter(btn_connetti);
         
-        btn_connetti.setOnAction(evt->{connetti(); });
        
         scrollmsg.setContent(tab_msg); 
 
@@ -226,47 +217,81 @@ public class ClientInterf  extends Application {
         list_utenteon.setPrefWidth(150);
         list_utenteon.getSelectionModel().setSelectionMode( SelectionMode.MULTIPLE);
         txt_invia.setPrefWidth(500);
+   
+   }
+   private void azioneBtnInvia(){
+            String testo =txt_invia.getText();
+                
+               
+            if(gest_ser != null){
+                EventoLog ev = new EventoLog(TipoEvento.INVIA_CLICK,
+                                            gest_ser.get_localadd(),nomeutente);
+                    
+                try {
+                    ObservableList<String> l =list_utenteon.getSelectionModel().getSelectedItems();
+                    System.out.println("Selezionati "+ l.size() +" utenti");
+                    Message m=null;
+                    for(int i =0;i<l.size();i++){
+                        m=new Message_CHAT(testo,Type.CHAT,nomeutente,l.get(i));
+                        gest_ser.invia_msg(m);
+                    }
+                    ins_in_tabella(m);
+                        
+                    gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
+                    txt_invia.clear();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    txt_invia.setText("invio fallito");
+                 }
+                    
+            }    
+    }
+    
+   private void azioneBtnElimina(){
+        EventoLog ev = new EventoLog(TipoEvento.DEL_CLICK, 
+                                     gest_ser.get_localadd(),
+                                     nomeutente);
+        Message m = new MessageLOG(xs.toXML(ev));
+         try{
+            gest_ser.invia_msg(m);
+            CampiTabella ctbl;
+            ctbl=tab_msg.getSelectionModel().getSelectedItem();
+            if(ctbl!=null){
+                String ut = ctbl.getNome();
+                String d = ctbl.getDataora();
+                tab_msg.cancella(ut,d);
+                if(ut.equals(nomeutente)){
+                    MessageDEL mess = new MessageDEL(ut, d);
+                    gest_ser.invia_msg(mess);
+               }
+            }
+        }catch(IOException ie){
+            ie.printStackTrace();
+        }
+      
+    }
+    
+   public void initareachat(){
+        
+        istanziaelementichat();
+        
+        btn_connetti.setOnAction(evt->{connetti(); });
+
         
         btn_invia.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent evt) {
-                String testo =txt_invia.getText();
-                
-               
-                if(gest_ser != null){
-                    EventoLog ev = new EventoLog(TipoEvento.INVIA_CLICK,
-                                            gest_ser.get_localadd(),nomeutente);
-                    
-                    try {
-                        Type t;
-                        ObservableList<String> l =list_utenteon.getSelectionModel().getSelectedItems();
-                        System.out.println("Selezionati "+ l.size() +" utenti");
-                        if(l.size()>1)
-                            t=Type.CHAT_GROUP;
-                        else
-                            t=Type.CHAT;
-                        for(int i =0;i<l.size();i++){
-                            Message m=new Message_CHAT(testo,t,nomeutente,l.get(i));
-                        
-                            gest_ser.invia_msg(m);
-                            System.out.println("Messaggio inviato a "+m.getDest());
-
-                            ins_in_tabella(m);
-                        }
-                        gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        txt_invia.setText("invio fallito");
-                        
-                    }
-                    
-                }
+                azioneBtnInvia();
             }
         });
-        
+        btn_elimina.setOnAction(new EventHandler<ActionEvent>() { 
+            public void handle(ActionEvent evt){
+                azioneBtnElimina();
+            }
+            
+        });
       
-        hbBtn_txt.getChildren().addAll(txt_invia,btn_invia);
+        hbBtn_txt.getChildren().addAll(txt_invia,btn_invia,btn_elimina);
         vb_int_chat.getChildren().addAll(tab_msg,hbBtn_txt);
         hb_chatBox.getChildren().addAll(list_utenteon,vb_int_chat);
         vb_scenario_chat.getChildren().addAll(menu_chat,bp_connessione,hb_chatBox);
@@ -274,8 +299,8 @@ public class ClientInterf  extends Application {
         
         scena_connesso = new Scene(pannello_chat);
     }
-
-    public void init_tabmsg() {
+   
+   public void init_tabmsg() {
         tab_msg = new TabellaMessaggi(parametri.fontCelleTabella);
         tab_msg.setOnMouseClicked( 
                 new EventHandler<MouseEvent>(){
@@ -287,6 +312,7 @@ public class ClientInterf  extends Application {
                         Message m = new MessageLOG(xs.toXML(ev));
                         try{
                             gest_ser.invia_msg(m);
+                           
                         }catch(IOException ie){
                            ie.printStackTrace();
                         }
@@ -323,18 +349,16 @@ public class ClientInterf  extends Application {
             }
         });
         leggiDallaCache();
+        stage.setTitle("MyChat");
         stage.setScene(scena_connesso);
         stage.show();
     
     }
    
-   
     public static void main(String[] args) throws Exception {
         launch(args);
     }
    
-
-    
     private boolean connetti(){
         
        try{
@@ -391,24 +415,24 @@ public class ClientInterf  extends Application {
     
     public static synchronized void aggiorna_utenti(String s){
         list_utenteon.getItems().add(s);
-    
     }
     
     public static synchronized boolean elimina_utente(String u){
         list_utenteon.getItems().remove(u);
         return list_utenteon.getItems().isEmpty();
-   
     }    
    
     public static void ins_in_tabella(Message m){
-        DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");;
-
-        tab_msg.inserisci(new CampiTabella(m.getMittente(), m.getTesto(),dtf.format( m.getTime())));
+        tab_msg.inserisci(new CampiTabella(m.getMittente(), m.getTesto(),m.getTime()));
+    }
+    public static void rimuovi_da_tabella(Message m){
+        tab_msg.cancella(m.getMittente(),m.getTime());
     }
     
     public static void aggiornagrafo(ArrayList<CampiGrafo> al ){
         grafo.aggiungiuntenti(al);
     }
+  
     public void caricaParametriConfigurazione(){
         validaXML();
         XStream xs =new XStream();
@@ -431,7 +455,8 @@ public class ClientInterf  extends Application {
     
     public void salvaInCache(){
       try(FileOutputStream scriviFile = new FileOutputStream("./CacheLocale.bin");
-            ObjectOutputStream oggettoScritto = new ObjectOutputStream(scriviFile);){
+          ObjectOutputStream oggettoScritto = new ObjectOutputStream(scriviFile);
+         ){
             
             oggettoScritto.writeObject(new CacheBinaria(
                                                         txt_invia.getText(), 
@@ -442,20 +467,19 @@ public class ClientInterf  extends Application {
         } catch(IOException ioe){System.out.println(ioe.getMessage());}
     }
     public void leggiDallaCache(){
-    try(FileInputStream leggiFile = new FileInputStream("./CacheLocale.bin");
+        try(FileInputStream leggiFile = new FileInputStream("./CacheLocale.bin");
             ObjectInputStream oggettoLetto = new ObjectInputStream(leggiFile);){
             cache = (CacheBinaria) oggettoLetto.readObject();
             
             for(int i =0;i<cache.ultimi_mess.size();i++)
-                tab_msg.inserisci( cache.ultimi_mess.get(i));
+                tab_msg.inserisci(cache.ultimi_mess.get(i));
             
             txt_invia.setText(cache.testoLasciatoincasella);
             txtconnetti.setText(cache.ultimouser);
             grafo.aggiungiuntenti(cache.ultime_interazioni);
         } catch(IOException ioe){System.out.println(ioe.getMessage());}
           catch(ClassNotFoundException cnfe){System.out.println(cnfe.getMessage());}
-    
-    
+  
     }
 }
 

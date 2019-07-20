@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Messaggi;
+package client_server;
 
 import java.util.ArrayList;
 
@@ -11,12 +11,15 @@ import java.util.ArrayList;
  *
  * @author Iacopo
  */
-public class MessageLOGIN_OUT extends Message{
-
-    public MessageLOGIN_OUT(Type t,String nome) {
-        super(t,nome);
+public class Message_CHAT extends Message{
+    public String testo;
+    public Message_CHAT(String Testo,Type t, String m, String d) {
+        super(t, m, d);
+        this.testo = Testo;
     }
+    public String getTesto(){
+        return this.testo;
+    }       
     public ArrayList getCampi(){return null;}
-    public String getTesto(){return null;}
     
 }

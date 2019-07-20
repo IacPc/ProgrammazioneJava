@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Log;
+package client_server;
 
 /**
  *
  * @author Iacopo
  */
-public enum TipoEvento {
-    TABLE_CLICK,USERN_CLICK,MENU_CLICK,INVIA_CLICK,AGGSTAT_CLICK,EXIT_CLICK
+public enum Type {
+   LOG_IN,LOG_OUT,CHAT,OK,ERR,LOG,STAT,DEL
 }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Client;
-import Messaggi.*;
+import client_server.CampiGrafo;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

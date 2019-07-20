@@ -5,8 +5,7 @@
  */
 package Server;
 
-import Client.ParamConfClient;
-import Messaggi.*;
+import client_server.*;
 import com.thoughtworks.xstream.XStream;
 import java.io.*;
 import java.net.*;

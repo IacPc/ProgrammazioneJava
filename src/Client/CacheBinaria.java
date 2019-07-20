@@ -5,7 +5,7 @@
  */
 package Client;
 
-import Messaggi.CampiGrafo;
+import client_server.CampiGrafo;
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -18,10 +18,10 @@ import javafx.scene.chart.PieChart;
  */
 public class CacheBinaria implements Serializable{
     
-    String testoLasciatoincasella;
-    ArrayList<CampiTabella> ultimi_mess;
-    String ultimouser;
-    ArrayList<CampiGrafo> ultime_interazioni;
+    public String testoLasciatoincasella;
+    public ArrayList<CampiTabella> ultimi_mess;
+    public String ultimouser;
+    public ArrayList<CampiGrafo> ultime_interazioni;
 
 
     public CacheBinaria(String testoL,ObservableList<PieChart.Data> ui, ObservableList<CampiTabella> um,String ul) {

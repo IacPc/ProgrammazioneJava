@@ -6,9 +6,7 @@
 package Client;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import javafx.beans.property.SimpleStringProperty;
+
 
 /**
  *

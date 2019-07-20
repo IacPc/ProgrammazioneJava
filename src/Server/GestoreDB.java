@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package Server;
+import client_server.*;
+
 import java.sql.*;
-import Messaggi.*;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 /**
  *
@@ -27,7 +27,7 @@ public class GestoreDB {
                     );
             
             statementaggiornainterazione=connessioneADatabase.prepareStatement(
-                           "select NomeDestinatario as nd,count(*) as nm"
+                           " select NomeDestinatario as nd,count(*) as nm"
                          + " FROM prog_av.messaggi where DataInvio >= (current_date - ?)"
                          + " group by NomeDestinatario"
                          + " order by nm desc;");
@@ -39,8 +39,7 @@ public class GestoreDB {
         try {
             statementinseriscimessaggi.setString(1, m.getMittente());
             statementinseriscimessaggi.setString(2, m.getDest());
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String t = m.getTime().format(formatter);
+            String t = m.getTime();
             statementinseriscimessaggi.setString(3, t);
             statementinseriscimessaggi.setString(4, m.getTesto());
             statementinseriscimessaggi.setInt(5, i);
@@ -52,7 +51,6 @@ public class GestoreDB {
     
     }
     
-   
     public ArrayList aggiornaInterazioneUtente(int giorni,int quanti ){
         ArrayList<CampiGrafo> al = new ArrayList<>();
         try {

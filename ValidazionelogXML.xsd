@@ -4,6 +4,7 @@
  <xsd:element name="Log.EventoLog">
   <xsd:complexType>
    <xsd:all>
+   <xsd:element name="nome" type="xsd:string" />
     <xsd:element name="ip" type="xsd:string" />
     <xsd:element name="utente" type="xsd:string" />
     <xsd:element name="dataora" type="xsd:string" />

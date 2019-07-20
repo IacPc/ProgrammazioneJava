@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 package Server;
-import Messaggi.*;
-import java.io.*;
+import client_server.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.FileOutputStream;
 import java.nio.file.*;
 import java.nio.file.Files;
 
@@ -18,12 +16,7 @@ import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.xml.*;
-import javax.xml.parsers.*;
-import javax.xml.transform.dom.*;
-import javax.xml.transform.stream.*;
-import javax.xml.validation.*;
-import org.w3c.dom.*;
+
 
 
 /**
@@ -31,8 +24,9 @@ import org.w3c.dom.*;
  * @author Iacopo
  */
 /*
-Gestore utenti si occupa di gestire i messaggi 
-inviati da un determinato utente
+Gestore utente si occupa di gestire i messaggi 
+inviati da un determinato utente,ce n'è uno
+per ogni utente connesso
 */
 public class GestoreUtente extends Thread {
     
@@ -50,10 +44,8 @@ public class GestoreUtente extends Thread {
         gDB =new GestoreDB(conn,pwd,port);
     }
     
-     
     public void run(){
         try{
-            
             while(true){
                 Message msg = (Message)ricevi.readObject();
                 switch(msg.getTipo()){
@@ -75,32 +67,23 @@ public class GestoreUtente extends Thread {
                             invia.writeObject(new MessageERR());
                         }
                         break;   
-
                         case LOG_OUT:
                             System.out.println(msg.getMittente()+"si è disconnesso");
                             Server.broadcast(new MessageLOGIN_OUT(Type.LOG_OUT,utente));
-                            
                             invia.close();
                             ricevi.close();
                             sock.close();
-                            
                         break;
                         case CHAT:
                             System.out.println(msg.getMittente()+" scrive a "+msg.getDest() +": "+msg.getTesto());
 
                             Server.invia_chat(msg);
-                            if(!inserisciMessaggioDB(msg,this.prog++))
+                            prog++;
+                            if(!inserisciMessaggioDB(msg,prog))
                                 System.err.println("Messagio non inserito nel db");
 ;
                         break;
-                        case CHAT_GROUP:
-                            System.out.println(msg.getMittente()+" scrive a "+msg.getDest() +": "+msg.getTesto());
-
-                            Server.invia_chat(msg);
-                            if(!inserisciMessaggioDB(msg,this.prog++))
-                                System.err.println("Messagio non inserito nel db");
-;
-                        break;
+                        
                         case LOG:
                             String s =new String( msg.getTesto()+'\n');
                             System.out.print(s);
@@ -129,6 +112,9 @@ public class GestoreUtente extends Thread {
                               invia_msg(new MessageSTAT(null,al));
                                 
                         break;
+                        case DEL:
+                            System.out.println("ricevuta richiesta eliminazione messaggio");
+                            Server.broadcast(msg);
                     }
         
             }     
@@ -160,20 +146,16 @@ public class GestoreUtente extends Thread {
     }
     //funzioni di utilità per il db
 
-    
    public static synchronized boolean inserisciMessaggioDB(Message m,int i){
        return gDB.inserisciMessaggioDB(m,i);
     } 
     
-    public static synchronized ArrayList getStatistiche(){
-    
+   public static synchronized ArrayList getStatistiche(){
         try {
             return  gDB.aggiornaInterazioneUtente(Server.pcs.pGR.giornigrafo,
                                                   Server.pcs.pGR.quantiutenti);
         } catch (Exception e) {e.printStackTrace();return null;
         }
-       
     }
-    
-    
+ 
 }
