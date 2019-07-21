@@ -18,7 +18,7 @@ public  class CampiTabella implements Serializable {
         private final String testo;
 
 
-        public CampiTabella(String nome, String testo, String daor) {
+        public CampiTabella(String nome, String daor, String testo) {
             this.nome =nome;
             this.testo =testo;
             this.dataora = daor;

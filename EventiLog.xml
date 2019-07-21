@@ -3423,3 +3423,417 @@
   <dataora>2019-44-21 05:44:04</dataora>
   <nome>MyChat</nome>
 </Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-11-21 06:11:25</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-11-21 06:11:44</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-11-21 06:11:49</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-11-21 06:11:54</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-11-21 06:11:57</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-13-21 06:13:45</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-13-21 06:13:46</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-13-21 06:13:47</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-14-21 06:14:11</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-14-21 06:14:12</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-14-21 06:14:13</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-14-21 06:14:14</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-14-21 06:14:21</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-20-21 06:20:10</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-20-21 06:20:18</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-20-21 06:20:19</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-20-21 06:20:37</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-21-21 06:21:54</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-22-21 06:22:00</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-22-21 06:22:03</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-23-21 06:23:00</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-23-21 06:23:05</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-23-21 06:23:07</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-23-21 06:23:08</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-23-21 06:23:09</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-23-21 06:23:21</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-23-21 06:23:42</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-23-21 06:23:44</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-23-21 06:23:44</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-23-21 06:23:45</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-24-21 06:24:01</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-24-21 06:24:04</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente3</utente>
+  <dataora>2019-29-21 06:29:10</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente3</utente>
+  <dataora>2019-29-21 06:29:11</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente3</utente>
+  <dataora>2019-29-21 06:29:12</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente3</utente>
+  <dataora>2019-29-21 06:29:13</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-29-21 06:29:21</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-29-21 06:29:24</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-29-21 06:29:24</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-29-21 06:29:45</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-29-21 06:29:59</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-30-21 06:30:02</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-30-21 06:30:22</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-34-21 06:34:53</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-38-21 06:38:55</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente3</utente>
+  <dataora>2019-39-21 06:39:10</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente3</utente>
+  <dataora>2019-39-21 06:39:12</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente3</utente>
+  <dataora>2019-39-21 06:39:13</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente3</utente>
+  <dataora>2019-39-21 06:39:15</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-39-21 06:39:15</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-39-21 06:39:16</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-36-21 07:36:23</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-37-21 07:37:16</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-41-21 07:41:31</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-41-21 07:41:35</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-41-21 07:41:37</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-41-21 07:41:38</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-41-21 07:41:40</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-41-21 07:41:46</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-41-21 07:41:49</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-41-21 07:41:51</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-41-21 07:41:52</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-41-21 07:41:55</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-41-21 07:41:58</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-43-21 07:43:12</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="INVIA_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-43-21 07:43:25</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-43-21 07:43:32</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente1</utente>
+  <dataora>2019-43-21 07:43:39</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>Utente2</utente>
+  <dataora>2019-43-21 07:43:43</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>

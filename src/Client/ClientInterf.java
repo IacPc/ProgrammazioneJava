@@ -293,24 +293,28 @@ public class ClientInterf  extends Application {
     }
         
    private void azioneBtnElimina(){//7
-        EventoLog ev = new EventoLog(TipoEvento.DEL_CLICK, 
-                                     gest_ser.get_localadd(),
-                                     nomeutente);
-        Message m = new MessageLOG(xs.toXML(ev));
+        
          try{
-            gest_ser.invia_msg(m);
-                   
-             String s= tab_msg.getNomeUt();
-             String o= tab_msg.getOra();
-             tab_msg.cancella();
-             if(s.equals(nomeutente)){
-                    MessageDEL mess = new MessageDEL(s, o);
-                    gest_ser.invia_msg(mess);
-             }
+            if(gest_ser!=null){
+                EventoLog ev = new EventoLog(TipoEvento.DEL_CLICK, 
+                                         gest_ser.get_localadd(),
+                                         nomeutente);
+                Message m = new MessageLOG(xs.toXML(ev));
+                gest_ser.invia_msg(m);
+
+                 String s= tab_msg.getNomeUt();
+                 String o= tab_msg.getOra();
+                 if(s.equals(nomeutente)){
+                        MessageDEL mess = new MessageDEL(s, o);
+                        gest_ser.invia_msg(mess);
+                 }
+            }
+            tab_msg.cancella();
+
         }catch(IOException ie){
             ie.printStackTrace();
         }
-      
+
     }
     
    public void initareachat(){//8
@@ -382,13 +386,14 @@ public class ClientInterf  extends Application {
                                         gest_ser.get_localadd(),nomeutente);
                    gest_ser.invia_msg(new MessageLOG(xs.toXML(ev)));
                    gest_ser.invia_msg(new MessageLOGIN_OUT(Type.LOG_OUT,nomeutente));
-                   salvaInCache();
                 } catch (IOException e) {e.printStackTrace();
                 }
                list_utenteon.getItems().clear();
                gest_ser.chiudi();
                gest_ser=null;
             }
+            salvaInCache();
+
         });
         leggiDallaCache();
         stage.setTitle("MyChat");
@@ -418,7 +423,7 @@ public class ClientInterf  extends Application {
         return list_utenteon.getItems().isEmpty();
     }    
    public static void ins_in_tabella(Message m){//13
-        tab_msg.inserisci(m.getMittente(), m.getTesto(),m.getTime());
+        tab_msg.inserisci(m.getMittente(), m.getTime(),m.getTesto());
     }
    public static void rimuovi_da_tabella(Message m){///14
         tab_msg.cancella(m.getMittente(),m.getTime());
@@ -457,7 +462,7 @@ public class ClientInterf  extends Application {
                                                         txt_invia.getText(), 
                                                         grafo.getUtenti(),
                                                         tab_msg.getMessaggi(),
-                                                        nomeutente)
+                                                        txtconnetti.getText())
                                                         );
         } catch(IOException ioe){System.out.println(ioe.getMessage());}
     }

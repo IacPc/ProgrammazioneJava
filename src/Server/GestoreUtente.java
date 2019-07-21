@@ -64,7 +64,6 @@ public class GestoreUtente extends Thread {
                         }
                         break;   
                         case LOG_OUT:
-                            System.out.println(msg.getMittente()+"si è disconnesso");
                             Server.broadcast(new MessageLOGIN_OUT(Type.LOG_OUT,utente));
                             invia.close();
                             ricevi.close();
@@ -118,7 +117,6 @@ public class GestoreUtente extends Thread {
         }
         catch(java.net.SocketException se){
            rimuoviut(utente);
-           System.out.println("utente "+this.utente +" disconnesso");
         }
         catch (Exception e) {e.printStackTrace();}
            
