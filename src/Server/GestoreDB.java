@@ -18,7 +18,7 @@ public class GestoreDB {
     private static PreparedStatement statementaggiornainterazione;
     
     public  GestoreDB(String nomeconn,String pw,int porta)throws SQLException {
-    
+        
             connessioneADatabase = DriverManager.getConnection("jdbc:mysql://localhost:"+porta+"/"+nomeconn,"root",pw);   
             statementinseriscimessaggi = connessioneADatabase.prepareStatement(
                          "INSERT INTO `prog_av`.`messaggi` (`NomeMittente`,"
@@ -31,7 +31,7 @@ public class GestoreDB {
                          + " FROM prog_av.messaggi where DataInvio >= (current_date - ?)"
                          + " group by NomeDestinatario"
                          + " order by nm desc;");
-
+        
     }
     
     public boolean inserisciMessaggioDB(Message m,int i){

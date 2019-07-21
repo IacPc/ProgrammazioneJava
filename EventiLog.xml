@@ -3381,3 +3381,45 @@
   <dataora>2019-21-20 05:21:42</dataora>
   <nome>MyChat</nome>
 </Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>paolo</utente>
+  <dataora>2019-39-21 05:39:56</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>paolo</utente>
+  <dataora>2019-41-21 05:41:30</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>paolo</utente>
+  <dataora>2019-43-21 05:43:19</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>paolo</utente>
+  <dataora>2019-43-21 05:43:24</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="AGGSTAT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>paolo</utente>
+  <dataora>2019-43-21 05:43:27</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="MENU_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>paolo</utente>
+  <dataora>2019-43-21 05:43:31</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="EXIT_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>paolo</utente>
+  <dataora>2019-44-21 05:44:04</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>

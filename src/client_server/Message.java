@@ -26,7 +26,6 @@ public abstract class Message implements Serializable {
        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
        date_time =fmt.format(LocalDateTime.now());
     }
-
     
     public Message(Type mt,String m){
        this(mt,m,null);

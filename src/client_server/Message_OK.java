@@ -21,6 +21,5 @@ public class Message_OK extends Message{
     }
     public String getTesto(){return null;}
     public ArrayList getCampi(){return utenti;}
-    public void setUtenti(ArrayList al){utenti = al;}
     
 }

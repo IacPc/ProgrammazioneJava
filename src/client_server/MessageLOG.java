@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Iacopo
  */
 public class MessageLOG extends Message {
-    String xml;
+    private String xml;
 
     public MessageLOG(String xml) {
         super(Type.LOG);

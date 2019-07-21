@@ -11,9 +11,9 @@ package Server;
  */
 public class ParamConfServer {
    
-    int porta_ascolto;
-    ParamDB pDB;
-    ParamGrafo pGR;
+    public int porta_ascolto;
+    public ParamDB pDB;
+    public ParamGrafo pGR;
 
     public ParamConfServer(int porta_ascolto,ParamDB pd,ParamGrafo pg) {
         this.porta_ascolto = porta_ascolto;

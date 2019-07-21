@@ -11,13 +11,9 @@ import java.io.ObjectOutputStream;
 import java.nio.file.*;
 import java.nio.file.Files;
 
-
 import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-
-
 
 /**
  *
@@ -146,11 +142,11 @@ public class GestoreUtente extends Thread {
     }
     //funzioni di utilità per il db
 
-   public static synchronized boolean inserisciMessaggioDB(Message m,int i){
+    public static synchronized boolean inserisciMessaggioDB(Message m,int i){
        return gDB.inserisciMessaggioDB(m,i);
     } 
     
-   public static synchronized ArrayList getStatistiche(){
+    public static synchronized ArrayList getStatistiche(){
         try {
             return  gDB.aggiornaInterazioneUtente(Server.pcs.pGR.giornigrafo,
                                                   Server.pcs.pGR.quantiutenti);

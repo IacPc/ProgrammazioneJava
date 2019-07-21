@@ -38,9 +38,9 @@ public class Server {
     /**
      * @param args the command line arguments
      */
-    private static int port = 8080;
+    private static int port ;
     private static ServerSocket listener;
-    private static HashMap<String,GestoreUtente> Lgestut = new HashMap();
+    private static HashMap<String,GestoreUtente> listaGestUtente;
     public static ParamConfServer pcs;
     public static void main(String[] args) {
         try{
@@ -49,9 +49,10 @@ public class Server {
                 return;
             pcs = (ParamConfServer)(xs).fromXML(new String(Files.readAllBytes(
                                            Paths.get("./ConfigurazioneServer.xml"))));
-            listener= new ServerSocket(pcs.porta_ascolto);
+            port=pcs.porta_ascolto;
+            listener= new ServerSocket(port);
             System.out.println("Chat server avviato e in ascolto sulla porta:"+pcs.porta_ascolto);
-
+            listaGestUtente = new HashMap();
             while (true) {
                 Socket s= listener.accept();
                 
@@ -72,22 +73,22 @@ public class Server {
     }
     
     public static synchronized boolean inserisci_utente(String nm,GestoreUtente gu){
-        if(Lgestut.containsKey(nm))
+        if(listaGestUtente.containsKey(nm))
             return false;
-       Lgestut.put(nm,gu);
+       listaGestUtente.put(nm,gu);
        return true;
     }
         
     public static synchronized boolean rimuovi_utente(String nm)throws IOException{
             broadcast(new MessageLOGIN_OUT(Type.LOG_OUT,nm));
 
-            return(Lgestut.remove(nm)!=null);
+            return(listaGestUtente.remove(nm)!=null);
     }
     
     public static synchronized ArrayList crea_ar_list(){
     
         ArrayList<String> ut = new ArrayList<>();       
-        Iterator hmIterator = Lgestut.entrySet().iterator();
+        Iterator hmIterator = listaGestUtente.entrySet().iterator();
         int i =0;
         while (hmIterator.hasNext()) { 
             
@@ -103,34 +104,28 @@ public class Server {
     public static synchronized void broadcast(Message m)throws IOException{
         GestoreUtente g;
         
-        Iterator hmIterator = Lgestut.entrySet().iterator();
-        int i =0;
+        Iterator hmIterator = listaGestUtente.entrySet().iterator();
         try {
       
             while (hmIterator.hasNext()) { 
-
                HashMap.Entry element=(HashMap.Entry)hmIterator.next(); 
 
                if(m.getMittente()!= element.getKey()){
                     g=(GestoreUtente)element.getValue();
                     g.invia_msg(m);
-
                }
             } 
         } catch (IOException e) {e.printStackTrace();}  
     }
     
     public static synchronized void invia_chat(Message m) throws IOException{
-        GestoreUtente g = Lgestut.get(m.getDest());
+        GestoreUtente g = listaGestUtente.get(m.getDest());
         if(g==null)
             return;
         g.invia_msg(m);
         
     }
   
-    
-    
-    
     public static boolean validaXML(String doc,String xsd){
         try{
             DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();

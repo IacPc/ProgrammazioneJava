@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Message_CHAT extends Message{
     public String testo;
-    public Message_CHAT(String Testo,Type t, String m, String d) {
-        super(t, m, d);
+    public Message_CHAT(String Testo, String m, String d) {
+        super(Type.CHAT,m, d);
         this.testo = Testo;
     }
     public String getTesto(){

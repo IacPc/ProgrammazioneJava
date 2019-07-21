@@ -234,7 +234,7 @@ public class ClientInterf  extends Application {
                   
                     Message m=null;
                     for(int i =0;i<l.size();i++){
-                        m=new Message_CHAT(testo,Type.CHAT,nomeutente,l.get(i));
+                        m=new Message_CHAT(testo,nomeutente,l.get(i));
                         gest_ser.invia_msg(m);
                     }
                     ins_in_tabella(m);
@@ -341,7 +341,6 @@ public class ClientInterf  extends Application {
         
         scena_connesso = new Scene(pannello_chat);
     }
-   
    public void init_tabmsg() {//8
         tab_msg = new TabellaMessaggi(parametri.fontCelleTabella);
         tab_msg.setOnMouseClicked( 
@@ -366,7 +365,6 @@ public class ClientInterf  extends Application {
                 });
  
     }
-   
     @Override
    public void start(Stage stage) throws Exception{
         xs= new XStream();
@@ -419,7 +417,6 @@ public class ClientInterf  extends Application {
         list_utenteon.getItems().remove(u);
         return list_utenteon.getItems().isEmpty();
     }    
-   
    public static void ins_in_tabella(Message m){//13
         tab_msg.inserisci(m.getMittente(), m.getTesto(),m.getTime());
     }
