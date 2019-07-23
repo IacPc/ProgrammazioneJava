@@ -27,7 +27,7 @@ public class GrafoMessaggiRicevuti extends PieChart {
         setStartAngle(180);
     }
     
-    public void aggiungiuntenti(ArrayList<CampiGrafo> al){
+    public void aggiornaUtenti(ArrayList<CampiGrafo> al){
         utenti.clear();
         for(int i =0;i<al.size();i++){
             utenti.add(new PieChart.Data(
@@ -42,3 +42,5 @@ public class GrafoMessaggiRicevuti extends PieChart {
     public ObservableList getUtenti(){return this.utenti;}
     
 }
+//I deu metodi aggiornano il grafo con i parametri ricevuti dal server in seguito ad una esplicita
+// richiesta da parte del client e restituiscono un riferimento alla lista utenti

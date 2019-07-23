@@ -25,3 +25,4 @@ public class CampiGrafo implements Serializable{
     public long getNumeroMessaggi(){return numeroMessaggi;}
     
 }
+//classe utilizzata per il trasferimento dei dati del grafo da server a client

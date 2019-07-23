@@ -40,7 +40,7 @@ public class GestoreUtente extends Thread {
         gDB =new GestoreDB(conn,pwd,port);
     }
     
-    public void run(){
+    public void run(){//1
         try{
             while(true){
                 Message msg = (Message)ricevi.readObject();
@@ -53,8 +53,7 @@ public class GestoreUtente extends Thread {
                             ArrayList al =Server.crea_ar_list();
                             Message m = new Message_OK(al);
                             invia.writeObject(m);
-                            Server.broadcast(msg);
-                            
+                           
                             System.out.println("utente:"+ utente +" loggato");
                              
                         }
@@ -116,35 +115,23 @@ public class GestoreUtente extends Thread {
                         
         }
         catch(java.net.SocketException se){
-           rimuoviut(utente);
+            Server.rimuovi_utente(utente);
         }
         catch (Exception e) {e.printStackTrace();}
            
       
     }
   
-    public void invia_msg(Message mc) throws IOException{
+    public void invia_msg(Message mc) throws IOException{//
         invia.writeObject(mc);
     }
-    
-    public void rimuoviut(String u) {
-        try {
-            Server.rimuovi_utente(u);
-            invia.close();
-            ricevi.close();
-            sock.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
+   
     //funzioni di utilità per il db
-
-    public static synchronized boolean inserisciMessaggioDB(Message m,int i){
+    public static synchronized boolean inserisciMessaggioDB(Message m,int i){//4
        return gDB.inserisciMessaggioDB(m,i);
     } 
     
-    public static synchronized ArrayList getStatistiche(){
+    public static synchronized ArrayList getStatistiche(){//5
         try {
             return  gDB.aggiornaInterazioneUtente(Server.pcs.pGR.giornigrafo,
                                                   Server.pcs.pGR.quantiutenti);
@@ -153,3 +140,8 @@ public class GestoreUtente extends Thread {
     }
  
 }
+//1 Resta in ascolto dei messaggi ricevuti dall'utente a cui è associat l'oggetto
+//  e gestisce le varie casistiche
+//2 serializza un msg nello stream di uscita connesso al client assocciato
+//3 richiama la funzione server.logout 
+//4 e 5 richiamano le funzioni di utilità per il database

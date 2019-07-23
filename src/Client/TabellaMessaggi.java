@@ -23,7 +23,7 @@ public class TabellaMessaggi extends TableView<CampiTabella> {
     
     private static ObservableList<CampiTabella> list_messages ; 
 
-    public TabellaMessaggi(String stile) {
+    public TabellaMessaggi(String stile) {//
         
         setEditable(true);
         list_messages = FXCollections.observableArrayList();
@@ -47,22 +47,18 @@ public class TabellaMessaggi extends TableView<CampiTabella> {
         
         getColumns().addAll(utente,ora,testo);
     }
-    
-    
-    
-    public static synchronized void inserisci(String n,String d,String t){
+
+    public static synchronized void inserisci(String n,String d,String t){//Inserisce messaggi nella tabella
         Platform.runLater(() -> {
             list_messages.add(new CampiTabella(n, d, t));
         });
     }
 
-    public void pulisci(){list_messages.clear();}
-   
-    public void cancella(){
+    public void cancella(){//1
         list_messages.remove(getSelectionModel().getSelectedIndex());
     }
     
-    public void cancella(String n,String o){
+    public void cancella(String n,String o){//2
         CampiTabella ct;
         int i=0;
      
@@ -82,3 +78,8 @@ public class TabellaMessaggi extends TableView<CampiTabella> {
  
 }
 
+//1 cancella il messaggio selezionato
+//2 cancella il messaggio inviato dall'utente n all'ora o(utilizzata in seguito
+//alla ricezione di un messaggio di tipo DEL
+//Le successive resittuiscono nomeu utente ora di un messaggio e un riferimento 
+//alla lista dei messaggi in tabella

@@ -35,13 +35,13 @@ public abstract class Message implements Serializable {
        this(mt,null,null);
     }
     
-   public Type getTipo() {return type;}
-   public String getMittente(){return this.mittente;}
-   public String getDest(){return this.destinatario;}
-   public String getTime(){return date_time;}
-   public void setTime(String d){this.date_time=d;}
-   public abstract ArrayList getCampi();
-   public abstract String getTesto();
+   public Type getTipo() {return type;}//1
+   public String getMittente(){return this.mittente;}//2
+   public String getDest(){return this.destinatario;}//3
+   public String getTime(){return date_time;}//4
+   public void setTime(String d){this.date_time=d;}//5
+   public abstract ArrayList getCampi();//6
+   public abstract String getTesto();//7
 }
 
 /**
@@ -49,3 +49,6 @@ public abstract class Message implements Serializable {
  * @author Iacopo
  */
 
+//1,2,3,4.7 restituiscono tipo,mittente,destinatario,testo e orario d invio del messaggio
+//6 classe che restituisce il campo del mesasaggio definito come una lista di valori propri
+//  del tipo del messaggio(tipo OK campo=Lista degli utenti connessi,STAT=parametri del grafo)

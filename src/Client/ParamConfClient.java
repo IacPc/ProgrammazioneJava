@@ -25,5 +25,5 @@ public class ParamConfClient {
        server_port=port;
       
     }
-    
+    //Descrive i parametri di configurazione del client
 }

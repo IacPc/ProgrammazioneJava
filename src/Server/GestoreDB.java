@@ -16,22 +16,20 @@ public class GestoreDB {
     private static Connection connessioneADatabase; 
     private static PreparedStatement statementinseriscimessaggi; 
     private static PreparedStatement statementaggiornainterazione;
-    
+   
     public  GestoreDB(String nomeconn,String pw,int porta)throws SQLException {
-        
-            connessioneADatabase = DriverManager.getConnection("jdbc:mysql://localhost:"+porta+"/"+nomeconn,"root",pw);   
+            connessioneADatabase = DriverManager.getConnection("jdbc:mysql://localhost:"+porta+"/"+nomeconn,"root",pw);
             statementinseriscimessaggi = connessioneADatabase.prepareStatement(
                          "INSERT INTO `prog_av`.`messaggi` (`NomeMittente`,"
                          + "`NomeDestinatario`, `DataInvio`, `Testo`,`Prog`)"
                          + " VALUES (?, ?, ?, ?,?);"
                     );
             
-            statementaggiornainterazione=connessioneADatabase.prepareStatement(
+        statementaggiornainterazione=connessioneADatabase.prepareStatement(
                            " select NomeDestinatario as nd,count(*) as nm"
                          + " FROM prog_av.messaggi where DataInvio >= (current_date - ?)"
                          + " group by NomeDestinatario"
                          + " order by nm desc;");
-        
     }
     
     public boolean inserisciMessaggioDB(Message m,int i){
@@ -70,5 +68,7 @@ public class GestoreDB {
   
  }
     
-    
-
+//statementinseriscimessaggi è responsabile dell'inseriemnto nel db dei messaggi inviati
+//statementaggiornainterazioni ricava le informazioni per costruire il grafo
+//Le funzioni inserisciMessaggioDB(Message m,int i) e aggiornaInterazioneUtente(int giorni,int quanti )
+//settano i parametri delle query e interrogano il db

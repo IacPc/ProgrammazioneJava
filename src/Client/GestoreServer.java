@@ -30,14 +30,14 @@ public class GestoreServer extends Thread{
         ricevi = new ObjectInputStream(log_socket.getInputStream());
     }
    
-    public void run(){
+    public void run(){//1
         try {
-            invia_login();
+            invia_msg(new MessageLOGIN_OUT(Type.LOG_IN,nomeut));
             System.out.println("login inviato al server");
             
             while(true){
                 Message msg =(Message)ricevi.readObject();
-                System.out.println("ricevuto mess");
+                System.out.println("ricevuto messaggio dal server di tipo:"+msg.getTipo());
                 switch (msg.getTipo()){
                     case OK:
                         System.out.println("connessione accettata dal server");
@@ -70,8 +70,6 @@ public class GestoreServer extends Thread{
                         });
                     break;
                     case CHAT :
-                        System.out.println("ricevuto messaggio di tipo chat");
-
                         Platform.runLater(() -> {
                              ClientInterf.ins_in_tabella(msg);
 
@@ -85,7 +83,6 @@ public class GestoreServer extends Thread{
                         }); 
                      break;
                     case DEL:
-                        System.out.println("ricevuta richiesta eliminazione messaggio");
                         Platform.runLater(() -> {
                             ClientInterf.rimuovi_da_tabella(msg);
                         }); 
@@ -106,31 +103,18 @@ public class GestoreServer extends Thread{
         }              
     }
        
-    public synchronized boolean invia_login() {
-    
-        try {
-            invia.writeObject(new MessageLOGIN_OUT(Type.LOG_IN,nomeut));
-       
-            return connesso_al_server;
-            
-        } catch (IOException  ie) {
-            return false;
-        }
-        
-
-  }
-    public synchronized void invia_msg(Message m)throws IOException{
+    public synchronized void invia_msg(Message m)throws IOException{//2
         invia.writeObject(m);
     }
-    public String get_Nomeut(){return nomeut;} 
-    public String get_localadd(){return log_socket.getLocalAddress().getHostAddress();}
-    public synchronized boolean isconnected()throws InterruptedException{
+    public String get_Nomeut(){return nomeut;} //3
+    public String get_localadd(){return log_socket.getLocalAddress().getHostAddress();}//4
+    public synchronized boolean isconnected()throws InterruptedException{//5
         while(in_attesa){
             wait();
         }
         return connesso_al_server;
     } 
-    public synchronized boolean chiudi(){
+    public synchronized boolean chiudi(){//6
         connesso_al_server = false;
         in_attesa=true;
         try {
@@ -145,3 +129,9 @@ public class GestoreServer extends Thread{
     }
 
 }
+//1 Resta in ascolto dei messaggi provenienti dal Server e specifica il comportamento 
+//  per ogni tipologia di messaggio
+//2 Serializza un messaggio nello stream di uscita connesso al server
+//3 e 4 restituiscono nome utente e indirizzo locale client
+//5 sospende il main thread dell'applicazione in attesa di una risposta da parte del server
+//6 chiude il socket e i relativi Stream

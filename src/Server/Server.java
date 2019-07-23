@@ -72,17 +72,28 @@ public class Server {
          }
     }
     
-    public static synchronized boolean inserisci_utente(String nm,GestoreUtente gu){
+    public static synchronized boolean inserisci_utente(String nm,GestoreUtente gu) throws IOException{
         if(listaGestUtente.containsKey(nm))
             return false;
        listaGestUtente.put(nm,gu);
+       Server.broadcast(new MessageLOGIN_OUT(Type.LOG_IN, nm));
+       
        return true;
     }
         
-    public static synchronized boolean rimuovi_utente(String nm)throws IOException{
-            broadcast(new MessageLOGIN_OUT(Type.LOG_OUT,nm));
+    public static synchronized boolean rimuovi_utente(String nm) {
+        if(listaGestUtente.remove(nm)!=null) {
+            try {
+                broadcast(new MessageLOGIN_OUT(Type.LOG_OUT,nm));
+                return true;
 
-            return(listaGestUtente.remove(nm)!=null);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return false;
+       
     }
     
     public static synchronized ArrayList crea_ar_list(){
@@ -138,3 +149,9 @@ public class Server {
                                 return false;}
     }
 }
+
+
+//1)inizalizza il Server con i paraemtri letti dal file di conf in xml e istanzia
+// le strutture dati necessari per il funizonamemento del server come listaGestUtente
+// e il ServerSocket su cui ascolat le connessioni
+//2)

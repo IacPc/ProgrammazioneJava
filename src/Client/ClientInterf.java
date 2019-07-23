@@ -271,7 +271,7 @@ public class ClientInterf  extends Application {
                     btn_connetti.setText("Disconnetti");
                 }
                 
-            }else{//DISconnettersi al serv. di mess.
+            }else{//DISconnettersi dal serv. di mess.
                gest_ser.invia_msg(new MessageLOGIN_OUT(Type.LOG_OUT,nomeutente));
                list_utenteon.getItems().clear();
                
@@ -430,7 +430,7 @@ public class ClientInterf  extends Application {
     }
     
    public static void aggiornagrafo(ArrayList<CampiGrafo> al ){//15
-        grafo.aggiungiuntenti(al);
+        grafo.aggiornaUtenti(al);
    }
   
    public void caricaParametriConfigurazione(){//16
@@ -480,7 +480,7 @@ public class ClientInterf  extends Application {
             }
             txt_invia.setText(cache.testoLasciatoincasella);
             txtconnetti.setText(cache.ultimouser);
-            grafo.aggiungiuntenti(cache.ultime_interazioni);
+            grafo.aggiornaUtenti(cache.ultime_interazioni);
         } catch(IOException ioe){System.out.println(ioe.getMessage());}
           catch(ClassNotFoundException cnfe){System.out.println(cnfe.getMessage());}
   

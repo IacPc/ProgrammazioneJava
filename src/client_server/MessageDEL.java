@@ -22,3 +22,4 @@ public class MessageDEL extends Message{
     public ArrayList getCampi(){return null;}
 
 }
+//Messaggio che notifica la cancellazione di un messaggio da parte del suo autore
