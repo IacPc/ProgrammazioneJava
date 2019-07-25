@@ -1,42 +1,30 @@
-<Client.EventoLog tipo="EXIT_CLICK">
+<Client.EventoLog tipo="TABLE_CLICK">
   <ip>127.0.0.1</ip>
   <utente>pippo</utente>
-  <dataora>2019-50-24 03:50:56</dataora>
+  <dataora>2019-07-25 02:57:00</dataora>
   <nome>MyChat</nome>
 </Client.EventoLog>
-<Client.EventoLog tipo="EXIT_CLICK">
-  <ip>127.0.0.1</ip>
-  <utente>Asdrubale</utente>
-  <dataora>2019-51-24 03:51:08</dataora>
-  <nome>MyChat</nome>
-</Client.EventoLog>
-<Client.EventoLog tipo="EXIT_CLICK">
-  <ip>127.0.0.1</ip>
-  <utente>Maria</utente>
-  <dataora>2019-51-24 03:51:10</dataora>
-  <nome>MyChat</nome>
-</Client.EventoLog>
-<Client.EventoLog tipo="EXIT_CLICK">
-  <ip>127.0.0.1</ip>
-  <utente>fff</utente>
-  <dataora>2019-54-24 03:54:56</dataora>
-  <nome>MyChat</nome>
-</Client.EventoLog>
-<Client.EventoLog tipo="EXIT_CLICK">
-  <ip>127.0.0.1</ip>
-  <utente>lucia</utente>
-  <dataora>2019-00-24 04:00:36</dataora>
-  <nome>MyChat</nome>
-</Client.EventoLog>
-<Client.EventoLog tipo="INVIA_CLICK">
-  <ip>127.0.0.1</ip>
-  <utente>paola</utente>
-  <dataora>2019-11-24 04:11:16</dataora>
-  <nome>MyChat</nome>
-</Client.EventoLog>
-<Client.EventoLog tipo="INVIA_CLICK">
+<Client.EventoLog tipo="TABLE_CLICK">
   <ip>127.0.0.1</ip>
   <utente>pippo</utente>
-  <dataora>2019-11-24 04:11:23</dataora>
+  <dataora>2019-07-25 02:57:02</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="TABLE_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-07-25 02:57:03</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-07-25 02:58:26</dataora>
+  <nome>MyChat</nome>
+</Client.EventoLog>
+<Client.EventoLog tipo="DEL_CLICK">
+  <ip>127.0.0.1</ip>
+  <utente>pippo</utente>
+  <dataora>2019-07-25 03:00:43</dataora>
   <nome>MyChat</nome>
 </Client.EventoLog>

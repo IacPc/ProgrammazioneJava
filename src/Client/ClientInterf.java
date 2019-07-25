@@ -317,7 +317,10 @@ public class ClientInterf  extends Application {
 
         }catch(IOException ie){
             ie.printStackTrace();
+        }catch(NullPointerException ie){
+            txt_invia.setText("Selezionare un meeaggio prima!");
         }
+
 
     }
     

@@ -24,7 +24,7 @@ public class EventoLog implements Serializable {
         this.tipo = tipo;
         this.ip = ip;
         this.utente = utente;
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-mm-dd hh:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
 
         this.dataora =dtf.format(LocalDateTime.now()) ;
     }
