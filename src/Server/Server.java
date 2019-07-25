@@ -58,9 +58,7 @@ public class Server {
                 
                 System.out.println("nuova richiesta di connessione ricevuta");
                 
-                GestoreUtente gu =new GestoreUtente(s,pcs.pDB.nomeDB,
-                                                    pcs.pDB.passDB,
-                                                    pcs.pDB.portadb);
+                GestoreUtente gu =new GestoreUtente(s,pcs);
                 gu.start();
             }
            

@@ -17,8 +17,8 @@ public class GestoreDB {
     private static PreparedStatement statementinseriscimessaggi; 
     private static PreparedStatement statementaggiornainterazione;
    
-    public  GestoreDB(String nomeconn,String pw,int porta)throws SQLException {
-            connessioneADatabase = DriverManager.getConnection("jdbc:mysql://localhost:"+porta+"/"+nomeconn,"root",pw);
+    public  GestoreDB(String nomeconn,String pw,int porta,String ip)throws SQLException {
+            connessioneADatabase = DriverManager.getConnection("jdbc:mysql://"+ip+":"+porta+"/"+nomeconn,"root",pw);
             statementinseriscimessaggi = connessioneADatabase.prepareStatement(
                          "INSERT INTO `prog_av`.`messaggi` (`NomeMittente`,"
                          + "`NomeDestinatario`, `DataInvio`, `Testo`,`Prog`)"

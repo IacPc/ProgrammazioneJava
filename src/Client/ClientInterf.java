@@ -243,8 +243,11 @@ public class ClientInterf  extends Application {
                     txt_invia.clear();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    txt_invia.setText("invio fallito");
+                    
+                 }catch (NullPointerException e) {
+                    txt_invia.setText("Nessun utente scelto");
                  }
+                    
                     
             }    
     }
@@ -289,6 +292,7 @@ public class ClientInterf  extends Application {
             e.printStackTrace();
             return false;
         }
+       
       return true;
     }
         

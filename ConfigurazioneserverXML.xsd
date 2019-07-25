@@ -17,6 +17,8 @@
 	<xsd:element name="nomeDB" type="xsd:string"/>
 	<xsd:element name="passDB" type="xsd:string"/>
 	<xsd:element name="portadb" type="xsd:int"/>
+	<xsd:element name="ipDB" type="xsd:string"/>
+
  </xsd:sequence>
 </xsd:complexType>
 

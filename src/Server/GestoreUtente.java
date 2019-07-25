@@ -33,11 +33,11 @@ public class GestoreUtente extends Thread {
     private int prog;
     private static GestoreDB gDB;
 
-    public GestoreUtente(Socket sock,String conn,String pwd,int port) throws SQLException, IOException,ClassNotFoundException{
+    public GestoreUtente(Socket sock,ParamConfServer ps) throws SQLException, IOException,ClassNotFoundException{
         this.sock = sock;
         ricevi = new ObjectInputStream(sock.getInputStream());
         invia = new ObjectOutputStream(sock.getOutputStream());
-        gDB =new GestoreDB(conn,pwd,port);
+        gDB =new GestoreDB(ps.pDB.nomeDB,ps.pDB.passDB,ps.pDB.portadb,ps.pDB.ipDB);
     }
     
     public void run(){//1
@@ -63,11 +63,11 @@ public class GestoreUtente extends Thread {
                         }
                         break;   
                         case LOG_OUT:
-                            Server.broadcast(new MessageLOGIN_OUT(Type.LOG_OUT,utente));
+                            Server.rimuovi_utente(utente);
                             invia.close();
                             ricevi.close();
                             sock.close();
-                        break;
+                            return;
                         case CHAT:
                             System.out.println(msg.getMittente()+" scrive a "+msg.getDest() +": "+msg.getTesto());
 
@@ -140,7 +140,7 @@ public class GestoreUtente extends Thread {
     }
  
 }
-//1 Resta in ascolto dei messaggi ricevuti dall'utente a cui è associat l'oggetto
+//1 Resta in ascolto dei messaggi ricevuti dall'utente a cui è associato l'oggetto
 //  e gestisce le varie casistiche
 //2 serializza un msg nello stream di uscita connesso al client assocciato
 //3 richiama la funzione server.logout 

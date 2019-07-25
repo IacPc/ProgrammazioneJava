@@ -4,6 +4,7 @@
     <nomeDB>prog_av</nomeDB>
     <passDB></passDB>
     <portadb>3306</portadb>
+	<ipDB>localhost</ipDB>
   </pDB>
   <pGR>
     <giornigrafo>15</giornigrafo>

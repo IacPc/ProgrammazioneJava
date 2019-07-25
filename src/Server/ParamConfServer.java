@@ -18,7 +18,7 @@ public class ParamConfServer {
     public ParamConfServer(int porta_ascolto,ParamDB pd,ParamGrafo pg) {
         this.porta_ascolto = porta_ascolto;
         this.pDB= pd;
-        this.pGR=pg;       
+        this.pGR=pg; 
     }
     
     
@@ -26,11 +26,13 @@ public class ParamConfServer {
         public String nomeDB;
         public String passDB;
         public int portadb;
+        public String ipDB;
 
-        public ParamDB(String nomeDB, String passDB,int porta) {
+        public ParamDB(String nomeDB, String passDB,int porta,String ip) {
             this.nomeDB = nomeDB;
             this.passDB = passDB;
             this.portadb=porta;
+            this.ipDB= ip;
         }
        
     }
